@@ -1,5 +1,20 @@
 @import '~normalize.css';
 
+@font-face {
+    font-family: SourceSansPro-Regular;
+    src: url(assets/fonts/SourceSansPro-Regular.otf) format("opentype");
+}
+
+@font-face {
+    font-family: SourceSansPro-Semibold;
+    src: url(assets/fonts/SourceSansPro-Semibold.otf) format("opentype");
+}
+
+@font-face {
+    font-family: SourceSansPro-Bold;
+    src: url(assets/fonts/SourceSansPro-Bold.otf) format("opentype");
+}
+
 .container {
     padding: 0 30px; 
 }
