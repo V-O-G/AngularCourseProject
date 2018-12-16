@@ -1,0 +1,33 @@
+.container {
+    @extend .vertical-align-center;
+    justify-content: space-between; 
+
+    height: 64px;
+    background-color: #414452;
+}    
+
+.status-controls {
+    display: flex;
+    color: white;
+}
+
+.login, .logoff-button {
+    @extend .vertical-align-center;    
+}
+
+.logoff-button {
+    background: none;      
+    border: none;
+    cursor: pointer;
+    color: inherit;
+    padding-left: 20px;
+}
+
+.status-img {
+    padding: 5px;
+}
+
+.vertical-align-center {
+    display: flex;
+    align-items: center;
+}
