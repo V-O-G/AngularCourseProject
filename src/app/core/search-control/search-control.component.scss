@@ -1,0 +1,32 @@
+.search-group {
+    padding: 24px 0;
+}
+.search-input {
+    width: 360px;
+    background-image: url(../../../assets/images/ic-search.png); 
+    background-repeat: no-repeat; 
+    background-position: 10px center;
+    text-indent: 40px;
+    padding: 0;
+}
+
+.search-button {
+    width: 100px;
+}
+
+.search-input, .search-button {
+    border: 1px solid #d9dbe3;
+    height: 48px;
+    margin: 0 10px 0 0;
+}
+
+.action-button {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.add-course-button {
+    width: 138px;
+    height: 36px;
+    background-color: #30b6dd;
+}

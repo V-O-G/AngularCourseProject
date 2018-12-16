@@ -15,6 +15,20 @@
     src: url(assets/fonts/SourceSansPro-Bold.otf) format("opentype");
 }
 
-.container {
-    padding: 0 30px; 
+* {
+    font-family: SourceSansPro-Regular;
+    box-sizing: border-box;
 }
+
+.container {
+    padding: 0 30px;
+}
+
+button {
+    color: #fff;
+    cursor: pointer;
+    border: 1px solid #d9dbe3;
+    border-radius: 3px;
+    background-color: #9bc837;
+}
+

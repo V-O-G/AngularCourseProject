@@ -4,12 +4,11 @@
 
     height: 64px;
     background-color: #414452;
-    font-family: SourceSansPro-Regular;
 }    
 
 .status-controls {
     display: flex;
-    color: white;
+    color: #fff;
 }
 
 .login, .logoff-button {
@@ -19,8 +18,6 @@
 .logoff-button {
     background: none;      
     border: none;
-    cursor: pointer;
-    color: inherit;
     padding-left: 20px;
 }
 

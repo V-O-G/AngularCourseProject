@@ -1,3 +1,21 @@
-<p>
-  search-control works!
-</p>
+<div class="container">
+  <div class="search-group">
+      <input 
+        [(ngModel)]="userSearch"
+        class="search-input" 
+        type="text" 
+        placeholder="Text to search"  
+      >
+      <button 
+        class="search-button"
+        (click)="logInputValue()"
+      >
+        Search
+      </button>
+  </div>
+   <div class="action-button">
+      <button class="add-course-button">
+          Search
+      </button>
+   </div>   
+</div>
