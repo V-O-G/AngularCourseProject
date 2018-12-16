@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { CourseListItem } from '../course-list-item.model';
+import { UserInfo } from 'src/app/user.model';
 
 @Component({
   selector: 'app-course-list-item',
@@ -15,9 +16,15 @@ export class CourseListItemComponent implements OnInit {
   }
 
   course: CourseListItem = new CourseListItem (
-      123,
-      'CourseTitle',
-      new Date(),
-      30,
-      'CourseDescription')
+    123,
+    'CourseTitle',
+    30,
+    'CourseDescription'
+  );
+
+  user: UserInfo = new UserInfo (
+    123,
+    'John',
+    'Doe'
+  ); 
 }
