@@ -11,7 +11,11 @@ import { SearchControlComponent } from '../core/search-control/search-control.co
     CommonModule,
     FormsModule
   ],
-  declarations: [CourseListComponent, CourseListItemComponent, SearchControlComponent],
+  declarations: [
+    CourseListComponent, 
+    CourseListItemComponent, 
+    SearchControlComponent
+  ],
   exports: [
     CourseListComponent,
   ]

@@ -1,4 +1,20 @@
-<div>
+<div class="container">
   <app-search-control></app-search-control>
-  <app-course-list-item></app-course-list-item>
+  <div 
+    *ngFor="let course of courses" 
+    class="course-list"
+  >
+    <app-course-list-item      
+      [course]="course"
+      (courseDeleted)="onCourseDeleted($event)"  
+    ></app-course-list-item>
+  </div> 
+  <div class="load-more-container">
+    <button 
+      (click)="onLoadMore()" 
+      class="load-more-button"
+    >
+      Load more
+    </button>
+  </div>
 </div>

@@ -1,3 +1,31 @@
-<p>
-  course-list-item works!
-</p>
+<div class="course-container">
+  <div class="course-item_header">   
+    <h3 class="course-title">
+        {{ course.title }}
+    </h3>
+    <div class="course_additional-info">
+      <div class="course-duration">
+          {{ this.calculateDuration(course.duration) }}
+      </div>
+      <div class="course-date">
+        {{ transformDate(course.creationDate) }}
+      </div>
+    </div> 
+  </div>
+  <div class="course-content">
+      <div class="course-description">
+          {{ course.description }}
+      </div>
+      <div class="course-controls">
+        <button class="course-control">
+          Edit
+        </button>
+        <button 
+          (click)="onCourseDelete()"
+          class="course-control"
+        >
+          Delete
+        </button>
+      </div> 
+  </div> 
+</div>

@@ -1,0 +1,29 @@
+ .container {
+     background-color: #f2f3f7;
+     padding-bottom: 80px;
+ }
+ .course-list {
+     margin-bottom: 24px;
+ }
+ .load-more-container {
+     height: 48px;
+     border-radius: 6px;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     background-color: #fff;
+     font-size: 12px;
+     text-transform: uppercase;
+ }
+
+ .load-more-button {
+     background-color: inherit;
+     border: none;
+     color: #577ce6;
+     text-transform: uppercase;
+     text-decoration: underline;
+
+     &:hover {
+        font-weight: bold;
+     }
+ }
