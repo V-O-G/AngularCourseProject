@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges } from '@angular/core';
 
 import { CourseListItem, ICourse } from '../course-list-item.model';
 
@@ -7,13 +7,20 @@ import { CourseListItem, ICourse } from '../course-list-item.model';
   templateUrl: './course-list.component.html',
   styleUrls: ['./course-list.component.scss']
 })
-export class CourseListComponent implements OnInit {
+export class CourseListComponent implements OnInit, OnChanges {
   courses: ICourse[] = [];
 
-  constructor() { }
+  constructor() { 
+    console.log('constructor works');
+  }
 
   ngOnInit() {
+    console.log('onInit works');
     this.createCourses();
+  }
+
+  ngOnChanges() {
+    console.log('ngOnChanges works');
   }
 
   createCourses() {
