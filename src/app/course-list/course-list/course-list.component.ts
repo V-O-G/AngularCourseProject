@@ -37,8 +37,8 @@ export class CourseListComponent implements OnInit, OnChanges {
     };
   }; 
   
-  onCourseDeleted(data: {courseId: number}) {
-    console.log(data.courseId);
+  onCourseDeleted(courseId: number) {
+    console.log(courseId);
   }
 
   onLoadMore() {

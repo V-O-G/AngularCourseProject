@@ -1,4 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 import { CourseListComponent } from './course-list.component';
 
@@ -8,7 +9,8 @@ describe('CourseListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CourseListComponent ]
+      declarations: [ CourseListComponent ],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA]
     })
     .compileComponents();
   }));
@@ -21,5 +23,11 @@ describe('CourseListComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should call createCourses() after onInit', () => {
+    component.courses = [];
+    component.ngOnInit();
+    expect(component.courses.length).toEqual(5);
   });
 });
