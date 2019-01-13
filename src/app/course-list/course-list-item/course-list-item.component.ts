@@ -22,12 +22,6 @@ export class CourseListItemComponent implements OnInit {
     'John',
     'Doe'
   );
-  
-  calculateDuration(courseDuration) {
-    const hours = Math.floor(courseDuration / 60);
-    const minutes = Math.round(this.course.duration % 60);
-    return hours ? `${hours}h ${minutes} min` : `${minutes} min`;
-  }
 
   transformDate(date) {
     const day = date.getDate();

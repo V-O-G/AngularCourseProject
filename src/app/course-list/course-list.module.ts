@@ -6,6 +6,7 @@ import { CourseListComponent } from './course-list/course-list.component';
 import { CourseListItemComponent } from './course-list-item/course-list-item.component';
 import { CoreModule } from '../core/core.module';
 import { CourseHighlightDirective } from './course-list-item/course-highlight.directive';
+import { DurationPipe } from './course-list-item/duration.pipe';
 
 @NgModule({
   imports: [
@@ -16,7 +17,8 @@ import { CourseHighlightDirective } from './course-list-item/course-highlight.di
   declarations: [
     CourseListComponent, 
     CourseListItemComponent,
-    CourseHighlightDirective, 
+    CourseHighlightDirective,
+    DurationPipe,
   ],
   exports: [
     CourseListComponent,

@@ -16,7 +16,7 @@
     </div>   
     <div class="course_additional-info">
       <div class="course-duration">
-          {{ this.calculateDuration(course.duration) }}
+          {{ course.duration | duration }}
       </div>
       <div class="course-date">
         {{ transformDate(course.creationDate) }}
