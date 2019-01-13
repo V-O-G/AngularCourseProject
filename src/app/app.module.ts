@@ -5,7 +5,6 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
-import { BreadcrumbsComponent } from './core/breadcrumbs/breadcrumbs.component';
 import { CourseListModule } from './course-list/course-list.module';
 import { CourseListComponent } from './course-list/course-list/course-list.component';
 
@@ -17,7 +16,6 @@ const appRoutes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    BreadcrumbsComponent,
   ],
   imports: [
     BrowserModule,

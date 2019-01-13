@@ -1,4 +1,7 @@
-<div class="course-container">
+<div 
+  [appCourseHighlight]="course.creationDate"
+  class="course-container"
+>
   <div class="course-item_header">   
     <h3 class="course-title">
         {{ course.title }}

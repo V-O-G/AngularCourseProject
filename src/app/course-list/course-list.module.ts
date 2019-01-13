@@ -4,17 +4,19 @@ import {FormsModule} from '@angular/forms';
 
 import { CourseListComponent } from './course-list/course-list.component';
 import { CourseListItemComponent } from './course-list-item/course-list-item.component';
-import { SearchControlComponent } from '../core/search-control/search-control.component';
+import { CoreModule } from '../core/core.module';
+import { CourseHighlightDirective } from './course-list-item/course-highlight.directive';
 
 @NgModule({
   imports: [
     CommonModule,
-    FormsModule
+    FormsModule,
+    CoreModule,
   ],
   declarations: [
     CourseListComponent, 
-    CourseListItemComponent, 
-    SearchControlComponent
+    CourseListItemComponent,
+    CourseHighlightDirective, 
   ],
   exports: [
     CourseListComponent,

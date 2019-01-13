@@ -8,7 +8,22 @@ import { CourseListItem, ICourse } from '../course-list-item.model';
   styleUrls: ['./course-list.component.scss']
 })
 export class CourseListComponent implements OnInit, OnChanges {
-  courses: ICourse[] = [];
+  courses: ICourse[] = [
+    {
+      id: 1,
+      title: 'Video Course 1',
+      creationDate: new Date(2020, 0, 1),
+      duration: 150,
+      description: 'upcoming course'
+    },
+    {
+      id: 2,
+      title: 'Video Course 2',
+      creationDate: new Date(2001, 0, 1),
+      duration: 150,
+      description: 'old course'
+    },  
+  ];
 
   constructor() { 
     console.log('constructor works');
@@ -28,7 +43,7 @@ export class CourseListComponent implements OnInit, OnChanges {
     for (let i=0; i<5; i++) {
       const courseItem: ICourse = new CourseListItem (
         i,
-        `Video Course ${i+1}`,
+        `Video Course ${i+3}`,
         Math.random()*100,
         courseDescription
       );
