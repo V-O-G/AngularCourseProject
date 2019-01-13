@@ -18,7 +18,8 @@ class TestHostComponent {
     title: 'testTitle',
     creationDate: new Date(),
     duration: 150,
-    description: 'testDescription'
+    description: 'testDescription',
+    topRated: true
   };
   public selectedCourseId: number;
   public onCourseDeleted(selectedCourseId: number) { 
@@ -50,7 +51,8 @@ describe('CourseListItemComponent', () => {
       title: 'testTitle',
       creationDate: new Date(),
       duration: 150,
-      description: 'testDescription'
+      description: 'testDescription',
+      topRated: true
     };
 
     const deleteButton = fixture.debugElement.query(By.css('.button-delete'));

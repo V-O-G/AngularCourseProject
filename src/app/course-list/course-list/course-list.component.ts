@@ -14,14 +14,16 @@ export class CourseListComponent implements OnInit, OnChanges {
       title: 'Video Course 1',
       creationDate: new Date(2020, 0, 1),
       duration: 150,
-      description: 'upcoming course'
+      description: 'upcoming course',
+      topRated: false
     },
     {
       id: 2,
       title: 'Video Course 2',
       creationDate: new Date(2001, 0, 1),
       duration: 150,
-      description: 'old course'
+      description: 'old course',
+      topRated: true
     },  
   ];
 

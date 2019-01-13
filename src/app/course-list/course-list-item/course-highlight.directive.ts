@@ -1,4 +1,4 @@
-import { Directive, Input, HostListener, ElementRef, HostBinding, OnInit } from "@angular/core";
+import { Directive, Input, ElementRef, HostBinding, OnInit } from "@angular/core";
 
 @Directive({
     selector: '[appCourseHighlight]'
@@ -24,11 +24,11 @@ export class CourseHighlightDirective implements OnInit {
             +date <= +new Date()
             && +new Date() - (+date) < this.fourteenDays 
         ) {
-            this.borderStyle = '2px solid lime';
+            this.borderStyle = '2px solid palegreen';
         } else if(
             +date > +new Date()
         ) {
-            this.borderStyle = '2px solid aqua';
+            this.borderStyle = '2px solid powderblue';
         } else {
             this.borderStyle = 'none';
         }

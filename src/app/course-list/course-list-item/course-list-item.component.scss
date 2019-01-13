@@ -14,9 +14,22 @@
 }
 
 .course-title {
+    display: flex;
+}
+
+.course-title-text {
     font-family: SourceSansPro-Semibold;
     font-size: 24px;
     margin: 0 0 8px 0;
+}
+
+.course-title_top-raited-icon {
+    padding-left: 5px;
+}
+
+.top-raited-icon {
+    max-height: 15px;
+    width: auto;
 }
 
 .course_additional-info {

@@ -4,6 +4,7 @@ export interface ICourse {
     creationDate: Date;
     duration: number;
     description: string;
+    topRated: boolean;
 }
 
 export class CourseListItem implements ICourse {
@@ -13,6 +14,7 @@ export class CourseListItem implements ICourse {
     creationDate: Date;
     duration: number;
     description: string;
+    topRated: boolean;
 
     constructor(id: number, title: string, duration: number, description: string) {
         this.id = id;
@@ -20,5 +22,6 @@ export class CourseListItem implements ICourse {
         this.creationDate = new Date();
         this.duration = duration;
         this.description = description;
+        this.topRated = false;
     }
 } 

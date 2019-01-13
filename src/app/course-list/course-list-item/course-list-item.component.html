@@ -2,10 +2,18 @@
   [appCourseHighlight]="course.creationDate"
   class="course-container"
 >
-  <div class="course-item_header">   
-    <h3 class="course-title">
-        {{ course.title }}
-    </h3>
+  <div class="course-item_header">
+    <div class="course-title">
+        <h3 class="course-title-text">
+            {{ course.title }}
+        </h3>
+        <div
+          *ngIf="course.topRated" 
+          class="course-title_top-raited-icon"
+        >
+            <img class="top-raited-icon" src="../../../assets/images/topRated-icon.png" alt="topRated">
+        </div>
+    </div>   
     <div class="course_additional-info">
       <div class="course-duration">
           {{ this.calculateDuration(course.duration) }}
