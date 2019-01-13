@@ -5,7 +5,7 @@
   <div class="course-item_header">
     <div class="course-title">
         <h3 class="course-title-text">
-            {{ course.title }}
+            {{ course.title | uppercase }}
         </h3>
         <div
           *ngIf="course.topRated" 
