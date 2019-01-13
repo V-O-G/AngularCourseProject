@@ -12,9 +12,15 @@
   <div class="load-more-container">
     <button 
       (click)="onLoadMore()" 
+      *ngIf="courses.length; else noCoursesAdded"
       class="load-more-button"
     >
       Load more
     </button>
+    <ng-template #noCoursesAdded>
+        <div class="no-data-message">
+            No data. Feel free to add new course
+        </div>
+    </ng-template>
   </div>
 </div>
