@@ -19,7 +19,7 @@
           {{ course.duration | duration }}
       </div>
       <div class="course-date">
-        {{ transformDate(course.creationDate) }}
+        {{ course.creationDate | date: mediumDate }}
       </div>
     </div> 
   </div>

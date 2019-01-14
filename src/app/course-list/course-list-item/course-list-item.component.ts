@@ -23,14 +23,6 @@ export class CourseListItemComponent implements OnInit {
     'Doe'
   );
 
-  transformDate(date) {
-    const day = date.getDate();
-    const months = ['Jan', 'Feb','Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
-    const month = months[date.getMonth()];
-    const year = date.getFullYear();
-    return `${day} ${month}, ${year}`  
-  }
-
   onCourseDelete() {
     this.courseDeleted.emit(this.course.id);
   }
