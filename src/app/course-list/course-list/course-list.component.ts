@@ -1,7 +1,8 @@
 import { Component, OnInit, OnChanges } from '@angular/core';
 
 import { CourseListItem, ICourse } from '../course-list-item.model';
-import { OrderByDatePipe } from '../order-by-date.pipe';
+import { OrderByDatePipe } from './pipes/order-by-date.pipe';
+import { filterByUserInputPipe } from './pipes/filter-by-user-intup.pipe';
 
 @Component({
   selector: 'app-course-list',
@@ -27,8 +28,13 @@ export class CourseListComponent implements OnInit, OnChanges {
       topRated: true
     },  
   ];
+  
+  coursesOriginal: ICourse[] = this.courses;
 
-  constructor(private orderByDate: OrderByDatePipe) { 
+  constructor(
+    private orderByDate: OrderByDatePipe,
+    private filterByUserInput: filterByUserInputPipe,
+  ) { 
     console.log('constructor works');
   }
 
@@ -62,5 +68,14 @@ export class CourseListComponent implements OnInit, OnChanges {
 
   onLoadMore() {
     console.log("load more");
+  }
+
+  getUserSearchInput(userSearchInput: string) {
+    this.courses = this.coursesOriginal;
+    this.courses = this.filterByUserInput.transform(this.courses, userSearchInput);
+  }
+
+  showAllCourses() {
+    this.courses = this.coursesOriginal;
   }
 }

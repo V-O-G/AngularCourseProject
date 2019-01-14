@@ -1,5 +1,8 @@
 <div class="container">
-  <app-search-control></app-search-control>
+  <app-search-control
+    (userSearchEntered)="getUserSearchInput($event)"
+    (showAllCourses)="showAllCourses($event)"
+  ></app-search-control>
   <div 
     *ngFor="let course of courses" 
     class="course-list"

@@ -2,13 +2,15 @@
 <div class="search-group">
     <input 
       [(ngModel)]="userSearch"
+      (focus)="onSearchFocus()"
       class="search-input" 
       type="text" 
-      placeholder="Text to search"  
+      placeholder="Text to search"
+  
     >
     <button 
       class="search-button"
-      (click)="logInputValue()"
+      (click)="getUserSearch()"
     >
       Search
     </button>
