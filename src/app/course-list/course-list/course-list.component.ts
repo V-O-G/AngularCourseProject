@@ -1,6 +1,7 @@
 import { Component, OnInit, OnChanges } from '@angular/core';
 
 import { CourseListItem, ICourse } from '../course-list-item.model';
+import { OrderByDatePipe } from '../order-by-date.pipe';
 
 @Component({
   selector: 'app-course-list',
@@ -27,13 +28,14 @@ export class CourseListComponent implements OnInit, OnChanges {
     },  
   ];
 
-  constructor() { 
+  constructor(private orderByDate: OrderByDatePipe) { 
     console.log('constructor works');
   }
 
   ngOnInit() {
     console.log('onInit works');
     this.createCourses();
+    this.courses = this.orderByDate.transform(this.courses);
   }
 
   ngOnChanges() {
