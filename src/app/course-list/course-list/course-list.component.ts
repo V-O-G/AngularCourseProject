@@ -2,7 +2,7 @@ import { Component, OnInit, OnChanges } from '@angular/core';
 
 import { CourseListItem, ICourse } from '../course-list-item.model';
 import { OrderByDatePipe } from './pipes/order-by-date.pipe';
-import { filterByUserInputPipe } from './pipes/filter-by-user-intup.pipe';
+import { FilterByUserInputPipe } from './pipes/filter-by-user-intup.pipe';
 
 @Component({
   selector: 'app-course-list',
@@ -33,7 +33,7 @@ export class CourseListComponent implements OnInit, OnChanges {
 
   constructor(
     private orderByDate: OrderByDatePipe,
-    private filterByUserInput: filterByUserInputPipe,
+    private filterByUserInput: FilterByUserInputPipe,
   ) { 
     console.log('constructor works');
   }

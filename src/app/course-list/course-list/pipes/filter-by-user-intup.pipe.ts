@@ -6,7 +6,7 @@ import { ICourse } from '../../course-list-item.model';
   name: 'filter',
   pure: false
 })
-export class filterByUserInputPipe implements PipeTransform {
+export class FilterByUserInputPipe implements PipeTransform {
 
   transform(courses: ICourse[], filterString: string): ICourse[] {
     if (courses.length === 0 || filterString === '') {

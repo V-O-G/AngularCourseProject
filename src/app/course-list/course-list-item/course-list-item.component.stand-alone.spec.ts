@@ -3,6 +3,8 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from "@angular/platform-browser";
 import { CourseListItemComponent } from './course-list-item.component';
 import { ICourse, CourseListItem } from '../course-list-item.model';
+import { CourseHighlightDirective } from './course-highlight.directive';
+import { DurationPipe } from './duration.pipe';
 
 describe('CourseListItemComponent', () => {
   let component: CourseListItemComponent;
@@ -12,7 +14,11 @@ describe('CourseListItemComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CourseListItemComponent ]
+      declarations: [ 
+        CourseListItemComponent, 
+        CourseHighlightDirective, 
+        DurationPipe 
+      ],
     })
   }));
 
