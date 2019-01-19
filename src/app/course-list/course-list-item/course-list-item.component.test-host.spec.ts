@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { By } from "@angular/platform-browser";
 import {Component} from "@angular/core";
+
 import { ICourse } from '../course-list-item.model';
 import { CourseListItemComponent } from './course-list-item.component';
 import { CourseHighlightDirective } from './course-highlight.directive';
