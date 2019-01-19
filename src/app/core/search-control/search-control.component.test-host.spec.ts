@@ -18,7 +18,7 @@ class TestHostComponent {
   }
 }
 
-describe('SearchControlComponent', () => {
+describe('SearchControlComponent (test-host)', () => {
   let testHost: TestHostComponent;
   let component: SearchControlComponent;
   let fixture: ComponentFixture<TestHostComponent>;
