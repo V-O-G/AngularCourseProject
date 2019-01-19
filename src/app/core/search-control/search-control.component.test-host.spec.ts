@@ -3,6 +3,7 @@ import { FormsModule } from '@angular/forms';
 
 import {Component} from "@angular/core";
 import { SearchControlComponent } from './search-control.component';
+import { By } from "@angular/platform-browser";
 
 @Component({
   template: `
@@ -18,9 +19,8 @@ class TestHostComponent {
   }
 }
 
-describe('SearchControlComponent (test-host)', () => {
+describe('SearchControlComponent', () => {
   let testHost: TestHostComponent;
-  let component: SearchControlComponent;
   let fixture: ComponentFixture<TestHostComponent>;
   
 
@@ -35,17 +35,19 @@ describe('SearchControlComponent (test-host)', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(TestHostComponent);
     testHost = fixture.componentInstance;
-    component = TestBed.createComponent(SearchControlComponent).componentInstance;
   });
 
   it('should emit user input', () => {
     fixture.detectChanges();
+    const inputElement = fixture.debugElement.query(By.css('.search-input')).nativeElement;
+    const searchButton = fixture.debugElement.query(By.css('.search-button'));
+    inputElement.value = 'Updated Task';
+    inputElement.dispatchEvent(new Event('input'));
 
-    component.userSearch = "user input";
-    component.getUserSearch();
-
-    const expectedUserInput = component.userSearch;
-
-    expect(testHost.userInput).toEqual(expectedUserInput);
+    fixture.whenStable().then(() => {
+      fixture.detectChanges();
+      searchButton.triggerEventHandler('click', null);
+      expect(testHost.userInput).toEqual('Updated Task');
+    });
   });
 });
