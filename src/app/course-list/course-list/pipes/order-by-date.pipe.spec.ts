@@ -1,7 +1,7 @@
 import { OrderByDatePipe } from './order-by-date.pipe';
 import { ICourse } from '../../course-list-item.model';
 
-describe('CourseListComponent', () => {
+describe('OrderByDatePipe', () => {
     let pipe: OrderByDatePipe;
 
     beforeEach(() => {

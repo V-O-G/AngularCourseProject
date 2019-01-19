@@ -1,6 +1,6 @@
 import { DurationPipe } from './duration.pipe';
 
-describe('CourseListComponent', () => {
+describe('DurationPipe', () => {
     let pipe: DurationPipe;
 
     beforeEach(() => {
