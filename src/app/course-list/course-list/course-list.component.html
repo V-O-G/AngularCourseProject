@@ -4,7 +4,7 @@
     (showAllCourses)="showAllCourses($event)"
   ></app-search-control>
   <div 
-    *ngFor="let course of courses" 
+    *ngFor="let course of coursesList" 
     class="course-list"
   >
     <app-course-list-item      
@@ -15,7 +15,7 @@
   <div class="load-more-container">
     <button 
       (click)="onLoadMore()" 
-      *ngIf="courses.length; else noCoursesAdded"
+      *ngIf="coursesList.length; else noCoursesAdded"
       class="load-more-button"
     >
       Load more

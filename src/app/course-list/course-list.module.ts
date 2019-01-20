@@ -9,6 +9,7 @@ import { CourseHighlightDirective } from './course-list-item/course-highlight.di
 import { DurationPipe } from './course-list-item/duration.pipe';
 import { OrderByDatePipe } from './course-list/pipes/order-by-date.pipe';
 import { FilterByUserInputPipe } from './course-list/pipes/filter-by-user-intup.pipe';
+import { CoursesService } from './courses.service';
 
 @NgModule({
   imports: [
@@ -27,6 +28,7 @@ import { FilterByUserInputPipe } from './course-list/pipes/filter-by-user-intup.
   providers: [
     OrderByDatePipe,
     FilterByUserInputPipe,
+    CoursesService,
   ],
   exports: [
     CourseListComponent,

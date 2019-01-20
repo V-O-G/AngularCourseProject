@@ -24,6 +24,9 @@ export class CourseListItemComponent implements OnInit {
   );
 
   onCourseDelete() {
-    this.courseDeleted.emit(this.course.id);
+    const courseToBeDeleted = confirm("Do you really want to delete this course?");
+    if(courseToBeDeleted) {
+      this.courseDeleted.emit(this.course.id);
+    }    
   }
 }
