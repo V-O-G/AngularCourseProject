@@ -32,3 +32,26 @@ button {
     background-color: #9bc837;
     outline: none;
 }
+
+.shared-title {
+    font-family: SourceSansPro-Semibold;
+    font-size: 24px;
+}
+
+.shared-input, {
+    border: 1px solid #d9dbe3;
+    border-radius: 3px;
+    text-indent: 10px;
+}
+
+.link-style-button {
+    background-color: inherit;
+    border: none;
+    color: #577ce6;
+    text-decoration: underline;
+
+    &:hover {
+       font-weight: bold;
+       cursor: pointer;
+    }
+}

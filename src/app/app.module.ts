@@ -7,6 +7,8 @@ import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { CourseListModule } from './course-list/course-list.module';
 import { CourseListComponent } from './course-list/course-list/course-list.component';
+import { LoginPageModule } from './login-page/login-page.module';
+import { AuthorizationService } from './authorization.service';
 
 const appRoutes: Routes = [
   { path: 'courses-page', component: CourseListComponent },
@@ -22,9 +24,10 @@ const appRoutes: Routes = [
     FormsModule,
     CoreModule,
     CourseListModule,
-    RouterModule.forRoot(appRoutes)
+    LoginPageModule,
+    RouterModule.forRoot(appRoutes),
   ],
-  providers: [],
+  providers: [AuthorizationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

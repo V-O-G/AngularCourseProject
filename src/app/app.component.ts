@@ -1,10 +1,26 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+
+import { AuthorizationService } from './authorization.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
-  title = 'AngularCourseProject';
+export class AppComponent implements OnInit {
+
+  constructor(
+  private authorizationService: AuthorizationService,
+) {}
+
+  userLoggedIn: boolean;
+  
+  ngOnInit() {
+    this.authorizationService.isUserLoggedIn
+    .subscribe(
+      (isLoggedIn: boolean) => {
+        this.userLoggedIn = isLoggedIn;
+      }
+    );
+  }
 }

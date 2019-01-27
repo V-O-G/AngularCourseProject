@@ -1,5 +1,4 @@
  .container {
-     background-color: #f2f3f7;
      padding-bottom: 80px;
      min-height: calc(100vh - 192px);
  }
@@ -16,16 +15,8 @@
      font-size: 12px;
  }
 
- .load-more-button {
-     background-color: inherit;
-     border: none;
-     color: #577ce6;
+ .link-style-button {
      text-transform: uppercase;
-     text-decoration: underline;
-
-     &:hover {
-        font-weight: bold;
-     }
  }
 
  .no-data-message {
