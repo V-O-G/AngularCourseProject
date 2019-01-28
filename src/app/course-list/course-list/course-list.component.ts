@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ICourse } from '../course-list-item.model';
 import { FilterByUserInputPipe } from '../pipes/filter-by-user-intup.pipe';
 import { CoursesService } from '../courses.service';
+import { OrderByDatePipe } from '../pipes/order-by-date.pipe';
 
 @Component({
   selector: 'app-course-list',
@@ -13,6 +14,7 @@ export class CourseListComponent implements OnInit {
 
   constructor( 
     private filterByUserInput: FilterByUserInputPipe,
+    private orderByDatePipe: OrderByDatePipe,
     private coursesService: CoursesService,
   ) { 
   }
@@ -20,7 +22,7 @@ export class CourseListComponent implements OnInit {
   coursesList: ICourse[];
 
   ngOnInit() {
-    this.coursesList = this.coursesService.getCourses();
+    this.coursesList = this.orderByDatePipe.transform(this.coursesService.getCourses());
   }  
   
   onCourseDeleted(courseId: number) {

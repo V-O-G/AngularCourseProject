@@ -1,7 +1,6 @@
 import { Injectable, EventEmitter } from "@angular/core";
 
 import { ICourse, CourseListItem } from "./course-list-item.model";
-import { OrderByDatePipe } from "../course-list/pipes/order-by-date.pipe";
 
 
 @Injectable()
@@ -25,28 +24,12 @@ export class CoursesService {
         },  
     ];
 
-    constructor(private orderByDate: OrderByDatePipe) {
+    constructor() {
         this.createInitialCourses();
     }
 
-    createInitialCourses() {
-        const courseDescription = 'Learn about where you can find course descriptions, what information they include, how they work, and details about various components of a course description. Course descriptions report information about a university or college\'s classes. They\'re published both in course catalogs that outline degree requirements and in course schedules that contain descriptions for all courses offered during a particular semester.';
-        for (let i=0; i<5; i++) {
-            const courseItem: ICourse = new CourseListItem (
-            i,
-            `Video Course ${i+3}`,
-            Math.random()*100,
-            courseDescription
-            );
-    
-            this.courses.push(courseItem);
-        };
-    }
-
-    statusUpdated = new EventEmitter<string>();
-
     getCourses() {
-        return this.orderByDate.transform(this.courses.slice());
+        return this.courses.slice();
     }
 
     addCourse(newCourse: ICourse) {
@@ -67,7 +50,21 @@ export class CoursesService {
         this.courses.splice(courseToRemove, 1);
     }
 
-    getCourseIndex(courseId: number) {
+    private createInitialCourses() {
+        const courseDescription = 'Learn about where you can find course descriptions, what information they include, how they work, and details about various components of a course description. Course descriptions report information about a university or college\'s classes. They\'re published both in course catalogs that outline degree requirements and in course schedules that contain descriptions for all courses offered during a particular semester.';
+        for (let i=0; i<5; i++) {
+            const courseItem: ICourse = new CourseListItem (
+            i,
+            `Video Course ${i+3}`,
+            Math.random()*100,
+            courseDescription
+            );
+    
+            this.courses.push(courseItem);
+        };
+    }
+
+    private getCourseIndex(courseId: number) {
         return this.courses.findIndex((course) => course.id === courseId);
     }
 }
