@@ -7,8 +7,8 @@ import { CourseListItemComponent } from './course-list-item/course-list-item.com
 import { CoreModule } from '../core/core.module';
 import { CourseHighlightDirective } from './course-list-item/course-highlight.directive';
 import { DurationPipe } from './course-list-item/duration.pipe';
-import { OrderByDatePipe } from './course-list/pipes/order-by-date.pipe';
-import { FilterByUserInputPipe } from './course-list/pipes/filter-by-user-intup.pipe';
+import { OrderByDatePipe } from '../course-list/pipes/order-by-date.pipe';
+import { FilterByUserInputPipe } from '../course-list/pipes/filter-by-user-intup.pipe';
 import { CoursesService } from './courses.service';
 
 @NgModule({

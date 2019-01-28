@@ -1,22 +1,23 @@
-import { OrderByDatePipe } from './order-by-date.pipe';
-import { ICourse } from '../../course-list-item.model';
+import { FilterByUserInputPipe } from './filter-by-user-intup.pipe';
+import { ICourse } from '../course-list-item.model';
 
-describe('OrderByDatePipe', () => {
-    let pipe: OrderByDatePipe;
+
+describe('FilterByUserInputPipe', () => {
+    let pipe: FilterByUserInputPipe;
 
     beforeEach(() => {
-        pipe = new OrderByDatePipe();
+        pipe = new FilterByUserInputPipe();
     });
 
     it('should create an instance', () => {
         expect(pipe).toBeTruthy();
     });
 
-    it('should sort the array by its creationDate', () => {
+    it('should filter the array by user input', () => {
         let coursesArray: ICourse[] = [
             {
                 id: 1,
-                title: 'Video Course 1',
+                title: 'Morning flowers',
                 creationDate: new Date(2019, 0, 3),
                 duration: 150,
                 description: 'upcoming course',
@@ -24,7 +25,7 @@ describe('OrderByDatePipe', () => {
               },
               {
                 id: 2,
-                title: 'Video Course 2',
+                title: 'Fresh air',
                 creationDate: new Date(2019, 0, 1),
                 duration: 150,
                 description: 'old course',
@@ -32,17 +33,18 @@ describe('OrderByDatePipe', () => {
               },
               {
                 id: 2,
-                title: 'Video Course 2',
+                title: 'Data workflow',
                 creationDate: new Date(2019, 0, 2),
                 duration: 150,
                 description: 'old course',
                 topRated: true
               },  
         ];
+        const userInput = 'flow';
         let expectedCoursesArray: ICourse[] = [
             {
                 id: 1,
-                title: 'Video Course 1',
+                title: 'Morning flowers',
                 creationDate: new Date(2019, 0, 3),
                 duration: 150,
                 description: 'upcoming course',
@@ -50,21 +52,13 @@ describe('OrderByDatePipe', () => {
               },
               {
                 id: 2,
-                title: 'Video Course 2',
-                creationDate: new Date(2019, 0, 2),
-                duration: 150,
-                description: 'old course',
-                topRated: true
-              },
-              {
-                id: 2,
-                title: 'Video Course 2',
+                title: 'Data workflow',
                 creationDate: new Date(2019, 0, 1),
                 duration: 150,
                 description: 'old course',
                 topRated: true
               },  
         ];
-        expect(JSON.stringify(pipe.transform(coursesArray))).toBeTruthy(JSON.stringify(expectedCoursesArray));
+        expect(JSON.stringify(pipe.transform(coursesArray, userInput))).toBeTruthy(JSON.stringify(expectedCoursesArray));
     });
 });

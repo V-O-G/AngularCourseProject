@@ -1,7 +1,7 @@
 import { Injectable, EventEmitter } from "@angular/core";
 
 import { ICourse, CourseListItem } from "./course-list-item.model";
-import { OrderByDatePipe } from "./course-list/pipes/order-by-date.pipe";
+import { OrderByDatePipe } from "../course-list/pipes/order-by-date.pipe";
 
 
 @Injectable()

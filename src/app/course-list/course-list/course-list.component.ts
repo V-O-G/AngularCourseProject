@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { ICourse } from '../course-list-item.model';
-import { FilterByUserInputPipe } from './pipes/filter-by-user-intup.pipe';
+import { FilterByUserInputPipe } from '../pipes/filter-by-user-intup.pipe';
 import { CoursesService } from '../courses.service';
 
 @Component({
