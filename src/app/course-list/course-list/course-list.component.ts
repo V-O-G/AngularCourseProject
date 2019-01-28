@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges } from '@angular/core';
 
 import { ICourse } from '../course-list-item.model';
 import { FilterByUserInputPipe } from '../pipes/filter-by-user-intup.pipe';
@@ -23,11 +23,11 @@ export class CourseListComponent implements OnInit {
 
   ngOnInit() {
     this.coursesList = this.orderByDatePipe.transform(this.coursesService.getCourses());
-  }  
+  }
   
   onCourseDeleted(courseId: number) {
     this.coursesService.removeCourse(courseId);
-    this.coursesList = this.coursesService.getCourses();
+    this.coursesList = this.orderByDatePipe.transform(this.coursesService.getCourses());
   }
 
   onLoadMore() {
