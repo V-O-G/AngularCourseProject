@@ -9,7 +9,7 @@ import { AuthorizationService } from 'src/app/authorization.service';
 })
 export class HeaderComponent {
 
-  constructor(private authorizationService: AuthorizationService) {}
+  constructor(public authorizationService: AuthorizationService) {}
   
   onLogOff() {
     this.authorizationService.logout();
