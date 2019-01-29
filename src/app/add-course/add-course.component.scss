@@ -1,0 +1,64 @@
+.add-course {
+    display: flex;
+    justify-content: center;
+    padding-top: 24px;
+    padding-bottom: 50px;
+}
+input, textarea {
+    margin-top: 8px;
+}
+textarea {
+    height: 108px;
+    border-color: #d9dbe3;
+}
+button {
+    margin: 6px;
+}
+.add-course_container {
+    width: 730px;
+    height: 590px;
+    border-radius: 6px;
+    box-shadow: 0 1px 24px 0 rgba(18, 21, 35, 0.08);
+    background-color: #ffffff; 
+    padding: 24px;  
+}
+.shared-title {
+    padding-bottom: 22px;
+}
+.label-group {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+}
+.label-info {
+    color: #6c7283;
+    font-size: 12px;
+}
+.form-group {
+    padding-bottom: 12px;
+}
+.shared-input {
+    display: block;
+    height: 36px;   
+}
+.small-width {
+    width: 150px;
+}
+.medium-width {
+    width: 310px;
+}
+.full-size {
+    width: 100%;
+}
+.cancel-button {
+    width: 76px;
+    background-color: #d9dbe3;
+    color: #5b616f;
+}
+.save-button {
+    width: 64px;
+}
+.add-course_controls {
+    display: flex;
+    justify-content: flex-end;
+}

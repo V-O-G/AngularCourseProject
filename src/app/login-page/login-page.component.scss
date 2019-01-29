@@ -10,43 +10,31 @@
     top: 50%; 
     margin-left: -150px;
     margin-top: -150px;
-
 }
-
 .login-popup_container {
     padding: 24px;
 }
-
 .login-popup_form {
     padding: 18px 0;
 }
-
 .login-popup_form-input {
     display: block;
     height: 36px;
     width: 100%;
     margin-top: 8px;
 }
-
 .form-group {
     margin-bottom: 12px;
 }
-
 .form-group:last-child {
     margin-bottom: 0;
 }
-
 .login-popup_controls {
     display: flex;
     justify-content: space-between;
     align-items: center;
     height: 36px;
 }
-
 .link-style-button {
     font-size: 12px;
-}
-
-.login-button {
-    height: 36px;
 }
