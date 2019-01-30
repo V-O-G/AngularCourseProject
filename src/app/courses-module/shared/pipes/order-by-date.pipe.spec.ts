@@ -15,7 +15,7 @@ describe('OrderByDatePipe', () => {
     });
 
     it('should sort the array by its creationDate', () => {
-        let coursesArray: ICourse[] = [
+        const coursesArray: ICourse[] = [
             {
                 id: 1,
                 title: 'Video Course 1',
@@ -41,7 +41,7 @@ describe('OrderByDatePipe', () => {
                 topRated: true
               },  
         ];
-        let expectedCoursesArray: ICourse[] = [
+        const expectedCoursesArray: ICourse[] = [
             {
                 id: 1,
                 title: 'Video Course 1',
@@ -67,6 +67,68 @@ describe('OrderByDatePipe', () => {
                 topRated: true
               },  
         ];
-        expect(JSON.stringify(pipe.transform(coursesArray))).toBeTruthy(JSON.stringify(expectedCoursesArray));
+        expect(JSON.stringify(pipe.transform(coursesArray))).toEqual(JSON.stringify(expectedCoursesArray));
     });
+
+    it('should return null if coursesArray = null', () => {
+        const coursesArray: ICourse[] = null;
+        const expectedCoursesArray: ICourse[] = null;
+        expect(pipe.transform(coursesArray)).toEqual(expectedCoursesArray);
+    });
+    it('should display courses without date in the end of the list', () => {
+        const coursesArray: ICourse[] = [
+            {
+                id: 1,
+                title: 'Video Course 1',
+                creationDate: new Date(2019, 0, 3),
+                duration: 150,
+                description: 'upcoming course',
+                topRated: false
+              },
+              {
+                id: 3,
+                title: 'Video Course 3',
+                creationDate: null,
+                duration: 150,
+                description: 'old course',
+                topRated: true
+              }, 
+              {
+                id: 2,
+                title: 'Video Course 2',
+                creationDate: new Date(2019, 0, 2),
+                duration: 150,
+                description: 'old course',
+                topRated: true
+              },
+        ];
+        const expectedCoursesArray: ICourse[] = [
+            {
+                id: 1,
+                title: 'Video Course 1',
+                creationDate: new Date(2019, 0, 3),
+                duration: 150,
+                description: 'upcoming course',
+                topRated: false
+              },
+              {
+                id: 2,
+                title: 'Video Course 2',
+                creationDate: new Date(2019, 0, 2),
+                duration: 150,
+                description: 'old course',
+                topRated: true
+              },
+              {
+                id: 3,
+                title: 'Video Course 3',
+                creationDate: null,
+                duration: 150,
+                description: 'old course',
+                topRated: true
+              },  
+        ];
+        expect(JSON.stringify(pipe.transform(coursesArray))).toEqual(JSON.stringify(expectedCoursesArray));
+    });
+
 });

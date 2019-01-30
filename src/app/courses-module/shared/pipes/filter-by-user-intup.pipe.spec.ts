@@ -15,13 +15,13 @@ describe('FilterByUserInputPipe', () => {
     });
 
     it('should filter the array by user input', () => {
-        let coursesArray: ICourse[] = [
+        const coursesArray: ICourse[] = [
             {
                 id: 1,
                 title: 'Morning flowers',
                 creationDate: new Date(2019, 0, 3),
                 duration: 150,
-                description: 'upcoming course',
+                description: 'description',
                 topRated: false
               },
               {
@@ -29,7 +29,7 @@ describe('FilterByUserInputPipe', () => {
                 title: 'Fresh air',
                 creationDate: new Date(2019, 0, 1),
                 duration: 150,
-                description: 'old course',
+                description: 'description',
                 topRated: true
               },
               {
@@ -37,29 +37,116 @@ describe('FilterByUserInputPipe', () => {
                 title: 'Data workflow',
                 creationDate: new Date(2019, 0, 2),
                 duration: 150,
-                description: 'old course',
+                description: 'description',
                 topRated: true
               },  
         ];
         const userInput = 'flow';
-        let expectedCoursesArray: ICourse[] = [
+        const expectedCoursesArray: ICourse[] = [
             {
                 id: 1,
                 title: 'Morning flowers',
                 creationDate: new Date(2019, 0, 3),
                 duration: 150,
-                description: 'upcoming course',
+                description: 'description',
                 topRated: false
               },
               {
                 id: 2,
                 title: 'Data workflow',
+                creationDate: new Date(2019, 0, 2),
+                duration: 150,
+                description: 'description',
+                topRated: true
+              },    
+        ];
+        expect(JSON.stringify(pipe.transform(coursesArray, userInput))).toEqual(JSON.stringify(expectedCoursesArray));
+    });
+    it('should return return [] if input doesn\'t match', () => {
+        const coursesArray: ICourse[] = [
+            {
+                id: 1,
+                title: 'Morning flowers',
+                creationDate: new Date(2019, 0, 3),
+                duration: 150,
+                description: 'description',
+                topRated: false
+              },
+              {
+                id: 2,
+                title: 'Fresh air',
                 creationDate: new Date(2019, 0, 1),
                 duration: 150,
-                description: 'old course',
+                description: 'description',
+                topRated: true
+              },
+              {
+                id: 2,
+                title: 'Data workflow',
+                creationDate: new Date(2019, 0, 2),
+                duration: 150,
+                description: 'description',
                 topRated: true
               },  
         ];
-        expect(JSON.stringify(pipe.transform(coursesArray, userInput))).toBeTruthy(JSON.stringify(expectedCoursesArray));
+        const userInput = 'someInput';
+        const expectedCoursesArray: ICourse[] = [];
+        expect(JSON.stringify(pipe.transform(coursesArray, userInput))).toEqual(JSON.stringify(expectedCoursesArray));
+    });
+    it('should show all courses if input = null', () => {
+        const coursesArray: ICourse[] = [
+            {
+                id: 1,
+                title: 'Morning flowers',
+                creationDate: new Date(2019, 0, 3),
+                duration: 150,
+                description: 'description',
+                topRated: false
+              },
+              {
+                id: 2,
+                title: 'Fresh air',
+                creationDate: new Date(2019, 0, 1),
+                duration: 150,
+                description: 'description',
+                topRated: true
+              },
+              {
+                id: 2,
+                title: 'Data workflow',
+                creationDate: new Date(2019, 0, 2),
+                duration: 150,
+                description: 'description',
+                topRated: true
+              },  
+        ];
+        const userInput = null;
+        const expectedCoursesArray: ICourse[] = [
+            {
+                id: 1,
+                title: 'Morning flowers',
+                creationDate: new Date(2019, 0, 3),
+                duration: 150,
+                description: 'description',
+                topRated: false
+              },
+              {
+                id: 2,
+                title: 'Fresh air',
+                creationDate: new Date(2019, 0, 1),
+                duration: 150,
+                description: 'description',
+                topRated: true
+              },
+              {
+                id: 2,
+                title: 'Data workflow',
+                creationDate: new Date(2019, 0, 2),
+                duration: 150,
+                description: 'description',
+                topRated: true
+              },  
+        ];
+        expect(JSON.stringify(pipe.transform(coursesArray, userInput))).toEqual(JSON.stringify(expectedCoursesArray));
     });
 });

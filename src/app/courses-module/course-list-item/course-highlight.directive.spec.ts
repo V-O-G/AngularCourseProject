@@ -63,6 +63,6 @@ describe('CourseHighlightDirective', () => {
   it('should not set any border to the element if creation date is more than forteen days ago (e.g. previous year)', () => {
     const targetElement = <HTMLDivElement>element.querySelector('#withoutBorder');
 
-    expect(targetElement.style.border).toEqual('none');
+    expect(targetElement.style.border).toEqual('');
   });
 });

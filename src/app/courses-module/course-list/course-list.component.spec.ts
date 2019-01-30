@@ -2,8 +2,10 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 import { CourseListComponent } from './course-list.component';
-import { OrderByDatePipe } from './pipes/order-by-date.pipe';
-import { FilterByUserInputPipe } from './pipes/filter-by-user-intup.pipe';
+
+import { OrderByDatePipe } from '../shared/pipes/order-by-date.pipe';
+import { FilterByUserInputPipe } from '../shared/pipes/filter-by-user-intup.pipe';
+import { CoursesService } from '../shared/services/courses.service';
 
 describe('CourseListComponent', () => {
   let component: CourseListComponent;
@@ -16,7 +18,7 @@ describe('CourseListComponent', () => {
         OrderByDatePipe,
         FilterByUserInputPipe,
       ],
-      providers: [ OrderByDatePipe, FilterByUserInputPipe ],
+      providers: [ OrderByDatePipe, FilterByUserInputPipe, CoursesService ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA]
     })
     .compileComponents();
@@ -33,8 +35,8 @@ describe('CourseListComponent', () => {
   });
 
   it('should call createCourses() after onInit', () => {
-    component.courses = [];
+    component.coursesList = [];
     component.ngOnInit();
-    expect(component.courses.length).toEqual(5);
+    expect(component.coursesList.length).toEqual(7);
   });
 });

@@ -2,6 +2,7 @@ import { TestBed, async } from '@angular/core/testing';
 import { NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 import { AppComponent } from './app.component';
+import { AuthorizationService } from './authorization.service';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -9,6 +10,7 @@ describe('AppComponent', () => {
       declarations: [
         AppComponent
       ],
+      providers: [AuthorizationService],
       schemas: [CUSTOM_ELEMENTS_SCHEMA]
     }).compileComponents();
   }));
@@ -16,10 +18,5 @@ describe('AppComponent', () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
     expect(app).toBeTruthy();
-  }));
-  it(`should have as title 'AngularCourseProject'`, async(() => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('AngularCourseProject');
   }));
 });
