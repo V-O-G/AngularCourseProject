@@ -1,9 +1,9 @@
 import { Component, OnInit, OnChanges } from '@angular/core';
 
 import { ICourse } from '../course-list-item.model';
-import { FilterByUserInputPipe } from '../pipes/filter-by-user-intup.pipe';
-import { CoursesService } from '../courses.service';
-import { OrderByDatePipe } from '../pipes/order-by-date.pipe';
+import { FilterByUserInputPipe } from '../shared/pipes/filter-by-user-intup.pipe';
+import { CoursesService } from '../shared/services/courses.service';
+import { OrderByDatePipe } from '../shared/pipes/order-by-date.pipe';
 
 @Component({
   selector: 'app-course-list',

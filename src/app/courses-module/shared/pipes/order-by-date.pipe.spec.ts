@@ -1,5 +1,6 @@
 import { OrderByDatePipe } from './order-by-date.pipe';
-import { ICourse } from '../course-list-item.model';
+import { ICourse } from '../../course-list-item.model';
+
 
 
 describe('OrderByDatePipe', () => {

@@ -5,8 +5,8 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
-import { CourseListModule } from './course-list/course-list.module';
-import { CourseListComponent } from './course-list/course-list/course-list.component';
+import { CourseListModule } from './courses-module/course-list.module';
+import { CourseListComponent } from './courses-module/course-list/course-list.component';
 import { LoginPageModule } from './login-page/login-page.module';
 import { AuthorizationService } from './authorization.service';
 import { AddCourseComponent } from './add-course/add-course.component';

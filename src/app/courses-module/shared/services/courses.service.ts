@@ -1,6 +1,6 @@
 import { Injectable, EventEmitter } from "@angular/core";
 
-import { ICourse, CourseListItem } from "./course-list-item.model";
+import { ICourse, CourseListItem } from "../../course-list-item.model";
 
 
 @Injectable()
