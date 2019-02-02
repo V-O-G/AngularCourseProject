@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {FormsModule} from '@angular/forms';
 
-import { LoginPageComponent } from './login-page.compont';
+import { LoginComponent } from './login/login.compont';
 
 @NgModule({
   imports: [
@@ -10,12 +10,12 @@ import { LoginPageComponent } from './login-page.compont';
     FormsModule,
   ],
   declarations: [
-    LoginPageComponent,
+    LoginComponent,
   ],
   providers: [
   ],
   exports: [
-    LoginPageComponent,
+    LoginComponent,
   ]
 })
-export class LoginPageModule { }
+export class LoginModule { }

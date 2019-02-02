@@ -7,27 +7,24 @@ import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { CourseListModule } from './courses-module/course-list.module';
 import { CourseListComponent } from './courses-module/course-list/course-list.component';
-import { LoginPageModule } from './login-page/login-page.module';
-import { AuthorizationService } from './authorization.service';
-import { AddCourseComponent } from './add-course/add-course.component';
+import { LoginModule } from './login-module/login.module';
+import { AuthorizationService } from './shared/services/authorization.service';
 
 const appRoutes: Routes = [
   { path: 'courses-page', component: CourseListComponent },
-  { path: 'add-course-page', component: AddCourseComponent },
   { path: '**', redirectTo: '/courses-page' },
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
-    AddCourseComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     CoreModule,
     CourseListModule,
-    LoginPageModule,
+    LoginModule,
     RouterModule.forRoot(appRoutes),
   ],
   providers: [AuthorizationService],

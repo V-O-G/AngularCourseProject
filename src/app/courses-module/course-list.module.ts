@@ -10,6 +10,7 @@ import { DurationPipe } from './course-list-item/duration.pipe';
 import { OrderByDatePipe } from './shared/pipes/order-by-date.pipe';
 import { FilterByUserInputPipe } from './shared/pipes/filter-by-user-intup.pipe';
 import { CoursesService } from './shared/services/courses.service';
+import { AddCourseComponent } from './add-course/add-course.component';
 
 @NgModule({
   imports: [
@@ -24,6 +25,7 @@ import { CoursesService } from './shared/services/courses.service';
     DurationPipe,
     OrderByDatePipe,
     FilterByUserInputPipe,
+    AddCourseComponent,
   ],
   providers: [
     OrderByDatePipe,

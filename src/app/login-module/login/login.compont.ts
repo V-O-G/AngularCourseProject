@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
 
-import { AuthorizationService } from '../authorization.service';
+import { AuthorizationService } from '../../shared/services/authorization.service';
 
 @Component({
   selector: 'login-page',
-  templateUrl: './login-page.component.html',
-  styleUrls: ['./login-page.component.scss']
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.scss']
 })
-export class LoginPageComponent {
+export class LoginComponent {
   constructor(private authorizationService: AuthorizationService) {}
 
   onLoginClick(email: string, password: string) {

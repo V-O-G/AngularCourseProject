@@ -22,7 +22,7 @@ export class AuthorizationService {
         this.isAuthenticated();
     }
     isAuthenticated() {
-        const passedInUserInfo = JSON.parse(localStorage.getItem('userInfo'));
+        const passedInUserInfo = this.getUserInfo();
         if (passedInUserInfo 
             && passedInUserInfo.email === this.userInfo.email 
             && passedInUserInfo.password === this.userInfo.password) {
@@ -34,6 +34,6 @@ export class AuthorizationService {
         }
     }
     getUserInfo() {
-        return localStorage.getItem('userInfo');
+        return JSON.parse(localStorage.getItem('userInfo'));
     }
 }

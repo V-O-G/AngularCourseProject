@@ -33,7 +33,9 @@ export class CoursesService {
     }
 
     addCourse(newCourse: ICourse) {
-        this.courses.push(newCourse);
+        if(newCourse) {
+            this.courses.push(newCourse);
+        }
     }
 
     getCourseById(courseId: number) {
