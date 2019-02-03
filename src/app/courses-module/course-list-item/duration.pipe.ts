@@ -6,8 +6,16 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class DurationPipe implements PipeTransform {
 
   transform(courseDuration: number): string {
-    const hours = Math.floor(courseDuration / 60);
-    const minutes = Math.round(courseDuration % 60);
-    return hours ? `${hours}h ${minutes} min` : `${minutes} min`;
+    if(courseDuration) {
+      const hours = Math.floor(courseDuration / 60);
+      const minutes = Math.round(courseDuration % 60);
+      return hours
+              ? minutes 
+              ? `${hours} h ${minutes} min` 
+              : `${hours} h` 
+            : `${minutes} min`;
+    } else {
+      return null;
+    }  
   }
 }

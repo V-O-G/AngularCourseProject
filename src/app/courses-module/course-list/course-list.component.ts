@@ -39,7 +39,9 @@ export class CourseListComponent implements OnInit {
     this.coursesList = this.filterByUserInput.transform(this.coursesList, userSearchInput);
   }
 
-  showAllCourses() {
-    this.coursesList = this.coursesService.getCourses();
+  showAllCourses(showCourses: boolean) {
+    if(showCourses) {
+      this.coursesList = this.coursesService.getCourses();
+    }
   }
 }

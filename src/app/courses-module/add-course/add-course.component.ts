@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnChanges } from '@angular/core';
 
 
 @Component({
@@ -6,7 +6,12 @@ import { Component } from '@angular/core';
   templateUrl: './add-course.component.html',
   styleUrls: ['./add-course.component.scss']
 })
-export class AddCourseComponent {  
+export class AddCourseComponent implements OnChanges { 
+  durationInput: string; 
   
   constructor() { }
+
+  ngOnChanges() {
+    console.log(this.durationInput);
+  }
 }

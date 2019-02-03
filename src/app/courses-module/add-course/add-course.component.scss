@@ -4,7 +4,7 @@
     padding-top: 24px;
     padding-bottom: 50px;
 }
-input, textarea {
+.input-container, textarea {
     margin-top: 8px;
 }
 textarea {
@@ -61,4 +61,11 @@ button {
 .add-course_controls {
     display: flex;
     justify-content: flex-end;
+}
+.duration {
+    display: flex;
+    align-items: center;
+}
+.duration-input-output {
+    padding-left: 12px;
 }

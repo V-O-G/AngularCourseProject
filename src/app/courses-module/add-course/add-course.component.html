@@ -4,58 +4,69 @@
             New course
         </div>
         <div class="add-course_form">
-            <form>
-                <div class="form-group">
-                    <div class="label-group">
-                        <label>Title</label>
-                        <div class="label-info">*required</div>
-                    </div>                   
+            <div class="form-group">
+                <div class="label-group">
+                    <label>Title</label>
+                    <div class="label-info">*required</div>
+                </div>
+                <div class="input-container">
                     <input
                         class="shared-input full-size"
                         placeholder="Text input"
                     >
+                </div>                   
+                
+            </div>
+            <div class="form-group">
+                <div class="label-group">
+                    <label>Description</label>
+                    <div class="label-info">*required</div>
+                </div> 
+                <textarea 
+                    class="full-size"
+                    placeholder="Add description"
+                ></textarea>
+            </div>
+            <div class="form-group">
+                <div class="label-group small-width">
+                    <label>Duration</label>
+                    <div class="label-info">*required</div>
                 </div>
-                <div class="form-group">
-                    <div class="label-group">
-                        <label>Description</label>
-                        <div class="label-info">*required</div>
-                    </div> 
-                    <textarea 
-                        class="full-size"
-                        placeholder="Add description"
-                    ></textarea>
-                </div>
-                <div class="form-group small-width">
-                    <div class="label-group">
-                        <label>Duration</label>
-                        <div class="label-info">*required</div>
-                    </div> 
+                <div class="duration input-container">
                     <input
+                        [(ngModel)]="durationInput"
                         class="shared-input small-width"
                         placeholder="minutes"
                     >
+                    <div class="duration-input-output">
+                        {{ durationInput | duration }}
+                    </div>
+                </div>    
+            </div>
+            <div class="form-group small-width">
+                <div class="label-group">
+                    <label>Date</label>
+                    <div class="label-info">*required</div>
                 </div>
-                <div class="form-group small-width">
-                    <div class="label-group">
-                        <label>Date</label>
-                        <div class="label-info">*required</div>
-                    </div> 
+                <div class="input-container">
                     <input
                         class="shared-input small-width"
                         placeholder="mm-dd-yyyy"
                     >
-                </div>
-                <div class="form-group medium-width">
-                    <div class="label-group">
-                        <label>Authors</label>
-                        <div class="label-info">*required</div>
-                    </div> 
+                </div>     
+            </div>
+            <div class="form-group medium-width">
+                <div class="label-group">
+                    <label>Authors</label>
+                    <div class="label-info">*required</div>
+                </div> 
+                <div class="input-container">
                     <input
                         class="shared-input medium-width"
                         placeholder="Start typing"
                     >
                 </div>
-            </form>
+            </div>
         </div>
         <div class="add-course_controls">
             <button 
