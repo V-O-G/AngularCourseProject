@@ -12,6 +12,5 @@ export class LoginComponent {
 
   onLoginClick(email: string, password: string) {
     this.authorizationService.login(email, password);
-  }
-  
+  }  
 }

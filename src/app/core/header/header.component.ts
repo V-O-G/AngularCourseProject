@@ -13,7 +13,6 @@ export class HeaderComponent implements OnInit {
   constructor(public authorizationService: AuthorizationService) {}
   ngOnInit() {
     this.userLogin = this.authorizationService.getUserInfo();
-    console.log(this.userLogin);
   }
 
   onLogOff() {

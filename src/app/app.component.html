@@ -1,9 +1,5 @@
 <div class="wrapper">
-  <app-header></app-header>
-  <ng-container *ngIf="userLoggedIn">
-      <app-breadcrumbs></app-breadcrumbs> 
-      <router-outlet></router-outlet>
-  </ng-container>
-  <login-page *ngIf="!userLoggedIn"></login-page>
+  <app-header></app-header> 
+  <router-outlet></router-outlet>
 </div>
 <app-footer class="footer"></app-footer> 

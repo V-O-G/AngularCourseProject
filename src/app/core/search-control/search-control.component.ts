@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-search-control',
@@ -11,7 +12,7 @@ export class SearchControlComponent implements OnInit {
 
   userSearch: string;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
   }
@@ -22,5 +23,9 @@ export class SearchControlComponent implements OnInit {
 
   onSearchFocus() {
     this.showAllCourses.emit(true);
+  }
+
+  onAddCourse() {
+    this.router.navigate(['/courses', 'new']);
   }
 }
