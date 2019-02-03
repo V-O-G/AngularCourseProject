@@ -43,8 +43,10 @@ export class CoursesService {
     }
 
     updateCourse(updatedCourse: ICourse ) {
-        const courseToReplace = this.getCourseIndex(updatedCourse.id);
-        this.courses.splice(courseToReplace, 1, updatedCourse);
+        if(updatedCourse && updatedCourse.id) {
+            const courseToReplace = this.getCourseIndex(updatedCourse.id);
+            this.courses.splice(courseToReplace, 1, updatedCourse);
+        } 
     }
     
     removeCourse(courseToRemoveId: number) {
