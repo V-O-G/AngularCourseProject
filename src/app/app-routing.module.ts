@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { CourseListComponent } from './courses-module/course-list/course-list.component';
-import { AddCourseComponent } from './courses-module/add-course/add-course.component';
+import { CourseListComponent } from './courses/course-list/course-list.component';
+import { AddCourseComponent } from './courses/add-course/add-course.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { LoginComponent } from './login-module/login/login.compont';
+import { LoginComponent } from './login/login/login.compont';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/courses', pathMatch: 'full' },
