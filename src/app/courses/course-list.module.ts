@@ -5,12 +5,12 @@ import {FormsModule} from '@angular/forms';
 import { CourseListComponent } from './course-list/course-list.component';
 import { CourseListItemComponent } from './course-list-item/course-list-item.component';
 import { CoreModule } from '../core/core.module';
-import { CourseHighlightDirective } from './course-list-item/course-highlight.directive';
-import { DurationPipe } from './course-list-item/duration.pipe';
 import { OrderByDatePipe } from './shared/pipes/order-by-date.pipe';
 import { FilterByUserInputPipe } from './shared/pipes/filter-by-user-intup.pipe';
 import { CoursesService } from './shared/services/courses.service';
 import { AddCourseComponent } from './add-course/add-course.component';
+import { DurationPipe } from './shared/pipes/duration.pipe';
+import { CourseHighlightDirective } from './shared/directives/course-highlight.directive';
 
 @NgModule({
   imports: [

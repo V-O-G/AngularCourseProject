@@ -4,8 +4,8 @@ import {Component} from "@angular/core";
 
 import { ICourse } from '../course-list-item.model';
 import { CourseListItemComponent } from './course-list-item.component';
-import { CourseHighlightDirective } from './course-highlight.directive';
-import { DurationPipe } from './duration.pipe';
+import { DurationPipe } from '../shared/pipes/duration.pipe';
+import { CourseHighlightDirective } from '../shared/directives/course-highlight.directive';
 
 @Component({
   template: `
@@ -39,7 +39,7 @@ describe('CourseListItemComponent', () => {
         CourseListItemComponent, 
         TestHostComponent, 
         CourseHighlightDirective, 
-        DurationPipe 
+        DurationPipe
       ],
       providers: [],
     })
