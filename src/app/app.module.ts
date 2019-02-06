@@ -8,7 +8,7 @@ import { CourseListModule } from './courses/course-list.module';
 import { LoginModule } from './login/login.module';
 import { AuthorizationService } from './shared/services/authorization.service';
 import { AppRoutingModule } from './app-routing.module';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { PageNotFoundComponent } from './core/page-not-found/page-not-found.component';
 
 
 @NgModule({

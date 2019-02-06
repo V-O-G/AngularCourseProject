@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { CourseListComponent } from './courses/course-list/course-list.component';
 import { AddCourseComponent } from './courses/add-course/add-course.component';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { PageNotFoundComponent } from './core/page-not-found/page-not-found.component';
 import { LoginComponent } from './login/login/login.compont';
 
 const appRoutes: Routes = [
