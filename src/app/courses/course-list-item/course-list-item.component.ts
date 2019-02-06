@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 
-import { UserInfo, IUser } from 'src/app/user.model';
+import { UserInfo, IUser } from 'src/app/core/models/user.model';
 import { ICourse } from '../course-list-item.model';
 
 @Component({
