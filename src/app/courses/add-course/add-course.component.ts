@@ -1,5 +1,5 @@
 import { Component, OnChanges } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { NewCourseService } from '../../core/shared/services/newCourse.service';
 
 
@@ -13,7 +13,8 @@ export class AddCourseComponent implements OnChanges {
   
   constructor(
     private router: Router,
-    private newCourseService: NewCourseService, 
+    private newCourseService: NewCourseService,
+    private route: ActivatedRoute, 
   ) { }
 
   ngOnChanges() {
@@ -22,6 +23,6 @@ export class AddCourseComponent implements OnChanges {
 
   onCancel() {
     this.newCourseService.addNewCourseActive.next(false);
-    this.router.navigate(['../']);
+    this.router.navigate(['../'], {relativeTo: this.route});
   }
 }

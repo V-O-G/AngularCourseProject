@@ -3,7 +3,7 @@
       <img src="../../../assets/images/logo.png" alt="logo">
   </div>
   <div
-    *ngIf="authorizationService.isAuthenticated()"
+    *ngIf="isUserLoggedIn"
     class="status-controls"
   >
     <div class="login">

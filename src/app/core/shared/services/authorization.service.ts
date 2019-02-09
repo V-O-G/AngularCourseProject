@@ -1,13 +1,17 @@
-import { EventEmitter } from "@angular/core";
+import { Subject } from "rxjs";
+import { Router } from "@angular/router";
 
 
 export class AuthorizationService {
-    isUserLoggedIn = new EventEmitter<boolean>();
+    isUserLoggedIn = new Subject();
 
     userInfo = {
         'email': 'JonDoe@mail.com',
         'password': 'Jonny123'
     } 
+
+    constructor(private router: Router) {
+    }
 
     login(email: string, password: string) {
         localStorage.setItem('userInfo', JSON.stringify({
@@ -26,11 +30,9 @@ export class AuthorizationService {
         if (passedInUserInfo 
             && passedInUserInfo.email === this.userInfo.email 
             && passedInUserInfo.password === this.userInfo.password) {
-                this.isUserLoggedIn.emit(true);
-                return true;
+                this.isUserLoggedIn.next(true);
         } else {
-            this.isUserLoggedIn.emit(false);
-            return false;
+            this.isUserLoggedIn.next(false);
         }
     }
     getUserInfo() {

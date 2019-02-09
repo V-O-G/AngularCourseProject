@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges } from '@angular/core';
 
 import { AuthorizationService } from './core/shared/services/authorization.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -8,19 +9,28 @@ import { AuthorizationService } from './core/shared/services/authorization.servi
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
+  isUserLoggedIn: boolean;
 
   constructor(
-  private authorizationService: AuthorizationService,
+    private authorizationService: AuthorizationService,
+    private router: Router,
 ) {}
-
-  userLoggedIn: boolean;
   
   ngOnInit() {
-    this.authorizationService.isUserLoggedIn
-    .subscribe(
+    this.authorizationService.isUserLoggedIn.subscribe(
       (isLoggedIn: boolean) => {
-        this.userLoggedIn = isLoggedIn;
+        this.isUserLoggedIn = isLoggedIn;
       }
     );
+    this.authorizationService.isAuthenticated();
+    this.checkLogIn();  
+  }
+
+  checkLogIn() {
+    if(this.isUserLoggedIn) {
+      this.router.navigate(['/courses']);
+    } else {
+      this.router.navigate(['/login']);
+    }
   }
 }
