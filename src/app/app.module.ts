@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { CourseListModule } from './courses/course-list.module';
 import { LoginModule } from './login/login.module';
-import { AuthorizationService } from './shared/services/authorization.service';
+import { AuthorizationService } from './core/shared/services/authorization.service';
 import { AppRoutingModule } from './app-routing.module';
 import { PageNotFoundComponent } from './core/page-not-found/page-not-found.component';
 
