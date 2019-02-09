@@ -7,9 +7,11 @@ import { LoginComponent } from './login/login/login.compont';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/courses', pathMatch: 'full' },
-  { path: 'courses', component: CourseListComponent },
+  { path: 'courses', component: CourseListComponent,
+  children: [
+  { path: 'new', component: AddCourseComponent },
+] },
   { path: 'login', component: LoginComponent },
-  { path: 'courses/new', component: AddCourseComponent },
   { path: 'not-found', component: PageNotFoundComponent },
   { path: '**', redirectTo: '/not-found' },
 ];

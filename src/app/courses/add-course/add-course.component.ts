@@ -1,4 +1,6 @@
 import { Component, OnChanges } from '@angular/core';
+import { Router } from '@angular/router';
+import { NewCourseService } from '../../core/shared/services/newCourse.service';
 
 
 @Component({
@@ -9,9 +11,17 @@ import { Component, OnChanges } from '@angular/core';
 export class AddCourseComponent implements OnChanges { 
   durationInput: string; 
   
-  constructor() { }
+  constructor(
+    private router: Router,
+    private newCourseService: NewCourseService, 
+  ) { }
 
   ngOnChanges() {
     console.log(this.durationInput);
+  }
+
+  onCancel() {
+    this.newCourseService.addNewCourseActive.next(false);
+    this.router.navigate(['../']);
   }
 }

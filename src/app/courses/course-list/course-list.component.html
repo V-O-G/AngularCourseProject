@@ -1,5 +1,9 @@
 <app-breadcrumbs></app-breadcrumbs>
-<div class="container">
+<router-outlet></router-outlet>
+<div
+  *ngIf="!newCourseActive"
+  class="container"
+>
   <app-search-control
     (userSearchEntered)="getUserSearchInput($event)"
     (showAllCourses)="showAllCourses($event)"

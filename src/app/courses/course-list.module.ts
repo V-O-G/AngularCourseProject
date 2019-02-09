@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {FormsModule} from '@angular/forms';
+import { AppRoutingModule } from '../app-routing.module';
 
 import { CourseListComponent } from './course-list/course-list.component';
 import { CourseListItemComponent } from './course-list-item/course-list-item.component';
@@ -17,6 +18,7 @@ import { CourseHighlightDirective } from './shared/directives/course-highlight.d
     CommonModule,
     FormsModule,
     CoreModule,
+    AppRoutingModule,
   ],
   declarations: [
     CourseListComponent, 

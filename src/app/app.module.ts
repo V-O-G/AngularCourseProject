@@ -9,6 +9,7 @@ import { LoginModule } from './login/login.module';
 import { AuthorizationService } from './core/shared/services/authorization.service';
 import { AppRoutingModule } from './app-routing.module';
 import { PageNotFoundComponent } from './core/page-not-found/page-not-found.component';
+import { NewCourseService } from './core/shared/services/newCourse.service';
 
 
 @NgModule({
@@ -24,7 +25,10 @@ import { PageNotFoundComponent } from './core/page-not-found/page-not-found.comp
     LoginModule,
     AppRoutingModule,
   ],
-  providers: [AuthorizationService],
+  providers: [
+    AuthorizationService,
+    NewCourseService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

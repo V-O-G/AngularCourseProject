@@ -4,6 +4,7 @@ import { ICourse } from '../course-list-item.model';
 import { FilterByUserInputPipe } from '../shared/pipes/filter-by-user-intup.pipe';
 import { CoursesService } from '../shared/services/courses.service';
 import { OrderByDatePipe } from '../shared/pipes/order-by-date.pipe';
+import { NewCourseService } from '../../core/shared/services/newCourse.service';
 
 @Component({
   selector: 'app-course-list',
@@ -11,11 +12,13 @@ import { OrderByDatePipe } from '../shared/pipes/order-by-date.pipe';
   styleUrls: ['./course-list.component.scss']
 })
 export class CourseListComponent implements OnInit {
+  newCourseActive: boolean = false;
 
   constructor( 
     private filterByUserInput: FilterByUserInputPipe,
     private orderByDatePipe: OrderByDatePipe,
     private coursesService: CoursesService,
+    private newCourseService: NewCourseService,
   ) { 
   }
 
@@ -23,6 +26,11 @@ export class CourseListComponent implements OnInit {
 
   ngOnInit() {
     this.coursesList = this.orderByDatePipe.transform(this.coursesService.getCourses());
+    this.newCourseService.addNewCourseActive.subscribe(
+      (addNewCourseActive: boolean) => {
+        this.newCourseActive = addNewCourseActive;
+      }
+    );
   }
   
   onCourseDeleted(courseId: number) {
