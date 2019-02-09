@@ -56,10 +56,10 @@ export class CoursesService {
 
     private createInitialCourses() {
         const courseDescription = 'Learn about where you can find course descriptions, what information they include, how they work, and details about various components of a course description. Course descriptions report information about a university or college\'s classes. They\'re published both in course catalogs that outline degree requirements and in course schedules that contain descriptions for all courses offered during a particular semester.';
-        for (let i=0; i<5; i++) {
+        for (let i=3; i<8; i++) {
             const courseItem: ICourse = new CourseListItem (
             i,
-            `Video Course ${i+3}`,
+            `Video Course ${i}`,
             Math.random()*100,
             courseDescription
             );

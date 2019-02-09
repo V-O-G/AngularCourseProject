@@ -28,7 +28,10 @@
           {{ course.description }}
       </div>
       <div class="course-controls">
-        <button class="course-control">
+        <button
+          (click)="onCourseEdit()"
+          class="course-control"
+        >
           Edit
         </button>
         <button 

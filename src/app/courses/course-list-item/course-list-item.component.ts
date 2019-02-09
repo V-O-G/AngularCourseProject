@@ -1,7 +1,9 @@
 import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 
 import { UserInfo, IUser } from 'src/app/core/models/user.model';
 import { ICourse } from '../course-list-item.model';
+import { NewCourseService } from 'src/app/core/shared/services/newCourse.service';
 
 @Component({
   selector: 'app-course-list-item',
@@ -13,7 +15,11 @@ export class CourseListItemComponent implements OnInit {
   @Input() course: ICourse;
   @Output() courseDeleted = new EventEmitter<number>(); 
   
-  constructor() { }
+  constructor(
+    private router: Router, 
+    private route: ActivatedRoute,
+    private newCourseService: NewCourseService,
+  ) { }
 
   ngOnInit() {
   }
@@ -29,5 +35,11 @@ export class CourseListItemComponent implements OnInit {
     if(courseToBeDeleted) {
       this.courseDeleted.emit(this.course.id);
     }    
+  }
+
+  onCourseEdit() {
+    const courseId = '' + this.course.id;
+    this.newCourseService.addNewCourseActive.next(true);
+    this.router.navigate([courseId], {relativeTo: this.route});
   }
 }

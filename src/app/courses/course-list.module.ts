@@ -9,7 +9,7 @@ import { CoreModule } from '../core/core.module';
 import { OrderByDatePipe } from './shared/pipes/order-by-date.pipe';
 import { FilterByUserInputPipe } from './shared/pipes/filter-by-user-intup.pipe';
 import { CoursesService } from './shared/services/courses.service';
-import { AddCourseComponent } from './add-course/add-course.component';
+import { AddEditCourseComponent } from './add-edit-course/add-edit-course.component';
 import { DurationPipe } from './shared/pipes/duration.pipe';
 import { CourseHighlightDirective } from './shared/directives/course-highlight.directive';
 
@@ -27,7 +27,7 @@ import { CourseHighlightDirective } from './shared/directives/course-highlight.d
     DurationPipe,
     OrderByDatePipe,
     FilterByUserInputPipe,
-    AddCourseComponent,
+    AddEditCourseComponent,
   ],
   providers: [
     OrderByDatePipe,
