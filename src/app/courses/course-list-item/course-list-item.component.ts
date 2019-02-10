@@ -38,8 +38,7 @@ export class CourseListItemComponent implements OnInit {
   }
 
   onCourseEdit() {
-    const courseId = '' + this.course.id;
     this.newCourseService.addNewCourseActive.next(true);
-    this.router.navigate([courseId], {relativeTo: this.route});
+    this.router.navigate([this.course.id], {relativeTo: this.route});
   }
 }

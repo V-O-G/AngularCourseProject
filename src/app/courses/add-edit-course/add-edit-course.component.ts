@@ -32,6 +32,10 @@ export class AddEditCourseComponent implements OnInit {
     this.router.navigate(['../'], {relativeTo: this.route});
   }
 
+  onSave() {
+    this.onCancel();
+  }
+
   getCourseInfo() {
     if (this.courseId) {
       this.course = this.coursesService.getCourseById(this.courseId);
