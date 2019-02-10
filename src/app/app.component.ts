@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
 
-import { AuthorizationService } from './core/shared/services/authorization.service';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -9,4 +7,5 @@ import { Router } from '@angular/router';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  
 }

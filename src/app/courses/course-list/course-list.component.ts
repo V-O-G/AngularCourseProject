@@ -48,7 +48,7 @@ export class CourseListComponent implements OnInit {
   }
 
   showAllCourses(showCourses: boolean) {
-    if(showCourses) {
+    if (showCourses) {
       this.coursesList = this.coursesService.getCourses();
     }
   }

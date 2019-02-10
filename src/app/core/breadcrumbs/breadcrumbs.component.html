@@ -1,3 +1,19 @@
-<div class="container">
-  Courses
+<div
+  class="container"
+>
+  <div *ngFor="let route of routes; let last = last">
+    <a 
+      (click)="onNavigate(route.path)"
+      [routerLink]="route.path" *ngIf="!last"
+    >
+      {{ route.name }}
+    </a>
+    <span *ngIf="last">
+      {{ route.name }}
+    </span>
+    <span
+      *ngIf="!last" 
+      class="divider"
+    >/</span>
+  </div> 
 </div>
