@@ -16,16 +16,9 @@ export class LoginComponent {
     private router: Router,
   ) {}
 
-  ngOnInit() {
-    this.authorizationService.isUserLoggedIn.subscribe(
-      (isLoggedIn: boolean) => {
-        this.isUserLoggedIn = isLoggedIn;
-      }
-    );
-  }
-
   onLoginClick(email: string, password: string) {
     this.authorizationService.login(email, password);
+    this.isUserLoggedIn = this.authorizationService.isAuthenticated();
     if(this.isUserLoggedIn) {
       this.router.navigate(['/courses']);
     }

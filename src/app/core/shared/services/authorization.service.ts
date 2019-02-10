@@ -19,7 +19,6 @@ export class AuthorizationService {
             'password': password
         }));
         this.isAuthenticated();
-        console.log('logged in successfully');
     }
     logout() {
         localStorage.removeItem('userInfo');
@@ -31,8 +30,10 @@ export class AuthorizationService {
             && passedInUserInfo.email === this.userInfo.email 
             && passedInUserInfo.password === this.userInfo.password) {
                 this.isUserLoggedIn.next(true);
+                return true;
         } else {
             this.isUserLoggedIn.next(false);
+            return false;
         }
     }
     getUserInfo() {

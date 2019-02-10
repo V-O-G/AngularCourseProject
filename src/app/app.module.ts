@@ -10,6 +10,7 @@ import { AuthorizationService } from './core/shared/services/authorization.servi
 import { AppRoutingModule } from './app-routing.module';
 import { PageNotFoundComponent } from './core/page-not-found/page-not-found.component';
 import { NewCourseService } from './core/shared/services/newCourse.service';
+import { AuthGuard } from './core/shared/services/auth-guard.service';
 
 
 @NgModule({
@@ -28,6 +29,7 @@ import { NewCourseService } from './core/shared/services/newCourse.service';
   providers: [
     AuthorizationService,
     NewCourseService,
+    AuthGuard,
   ],
   bootstrap: [AppComponent]
 })

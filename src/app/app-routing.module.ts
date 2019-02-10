@@ -4,11 +4,11 @@ import { CourseListComponent } from './courses/course-list/course-list.component
 import { AddEditCourseComponent } from './courses/add-edit-course/add-edit-course.component';
 import { PageNotFoundComponent } from './core/page-not-found/page-not-found.component';
 import { LoginComponent } from './login/login/login.compont';
-import { AppComponent } from './app.component';
+import { AuthGuard } from './core/shared/services/auth-guard.service';
 
 const appRoutes: Routes = [
-  { path: '', component: AppComponent },
-  { path: 'courses', component: CourseListComponent,
+  { path: '', redirectTo: '/courses', pathMatch: 'full' },
+  { path: 'courses', canActivate: [AuthGuard], component: CourseListComponent,
     children: [
       { path: 'new', component: AddEditCourseComponent },
       { path: ':id', component: AddEditCourseComponent },
