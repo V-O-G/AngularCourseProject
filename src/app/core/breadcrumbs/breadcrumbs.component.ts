@@ -17,7 +17,7 @@ export class BreadcrumbsComponent implements OnInit {
     router: Router,
     private newCourseService: NewCourseService,
   ) {
-    router.events.subscribe((val) => {
+    router.events.subscribe(() => {
       if(location.path() != '') {
         const routesList = location.path().slice(1).split('/');
         this.routes = routesList.reduce((routes, route, i) => {
@@ -25,7 +25,7 @@ export class BreadcrumbsComponent implements OnInit {
           const arrayForRoutePath = routesList.slice(0, i + 1);
           const routePath = arrayForRoutePath.reduce(
             (total, current) => {
-              return total + '/' + current
+              return total + '/' + current;
             },'');
           currentRoute['name'] = route;
           currentRoute['path'] = routePath;
