@@ -5,6 +5,7 @@ import { FilterByUserInputPipe } from '../shared/pipes/filter-by-user-intup.pipe
 import { CoursesService } from '../shared/services/courses.service';
 import { OrderByDatePipe } from '../shared/pipes/order-by-date.pipe';
 import { NewCourseService } from '../../core/shared/services/newCourse.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-course-list',
@@ -19,6 +20,7 @@ export class CourseListComponent implements OnInit {
     private orderByDatePipe: OrderByDatePipe,
     private coursesService: CoursesService,
     private newCourseService: NewCourseService,
+    private router: Router,
   ) { 
   }
 
@@ -29,6 +31,9 @@ export class CourseListComponent implements OnInit {
     this.newCourseService.addNewCourseActive.subscribe(
       (addNewCourseActive: boolean) => {
         this.newCourseActive = addNewCourseActive;
+        if(addNewCourseActive) {
+          this.router.navigate(['/courses', 'new']);
+        }
       }
     );
   }
