@@ -2,10 +2,7 @@
   class="container"
 >
   <div *ngFor="let route of routes; let last = last">
-    <a 
-      (click)="onNavigate(route.path)"
-      [routerLink]="route.path" *ngIf="!last"
-    >
+    <a [routerLink]="route.path" *ngIf="!last">
       {{ route.name }}
     </a>
     <span *ngIf="last">
