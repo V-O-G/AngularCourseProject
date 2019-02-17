@@ -1,21 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
-import { NewCourseService } from '../shared/services/newCourse.service';
 
 @Component({
   selector: 'app-breadcrumbs',
   templateUrl: './breadcrumbs.component.html',
   styleUrls: ['./breadcrumbs.component.scss'],
 })
-export class BreadcrumbsComponent implements OnInit {
+export class BreadcrumbsComponent {
   routes: any;
   newCourseActive: boolean;
 
   constructor(
     location: Location, 
     router: Router,
-    private newCourseService: NewCourseService,
   ) {
     router.events.subscribe(() => {
       if(location.path() != '') {
@@ -34,14 +32,4 @@ export class BreadcrumbsComponent implements OnInit {
       }
     });
   }
-
-  ngOnInit() {
-  }
-
-  onNavigate(routerPath: string) {
-    if(routerPath === '/courses') {
-      this.newCourseService.addNewCourseActive.next(false);
-    }
-  }
-
 }

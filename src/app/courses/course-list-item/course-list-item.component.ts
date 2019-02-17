@@ -3,7 +3,6 @@ import { Router, ActivatedRoute } from '@angular/router';
 
 import { UserInfo, IUser } from 'src/app/core/models/user.model';
 import { ICourse } from '../course-list-item.model';
-import { NewCourseService } from 'src/app/core/shared/services/newCourse.service';
 
 @Component({
   selector: 'app-course-list-item',
@@ -18,7 +17,6 @@ export class CourseListItemComponent implements OnInit {
   constructor(
     private router: Router, 
     private route: ActivatedRoute,
-    private newCourseService: NewCourseService,
   ) { }
 
   ngOnInit() {
@@ -38,7 +36,6 @@ export class CourseListItemComponent implements OnInit {
   }
 
   onCourseEdit() {
-    this.newCourseService.addNewCourseActive.next(true);
     this.router.navigate([this.course.id], {relativeTo: this.route});
   }
 }

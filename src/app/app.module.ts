@@ -9,7 +9,6 @@ import { LoginModule } from './login/login.module';
 import { AuthorizationService } from './core/shared/services/authorization.service';
 import { AppRoutingModule } from './app-routing.module';
 import { PageNotFoundComponent } from './core/page-not-found/page-not-found.component';
-import { NewCourseService } from './core/shared/services/newCourse.service';
 import { AuthGuard } from './core/shared/services/auth-guard.service';
 
 
@@ -28,7 +27,6 @@ import { AuthGuard } from './core/shared/services/auth-guard.service';
   ],
   providers: [
     AuthorizationService,
-    NewCourseService,
     AuthGuard,
   ],
   bootstrap: [AppComponent]

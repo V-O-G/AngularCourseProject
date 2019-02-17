@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { NewCourseService } from '../../core/shared/services/newCourse.service';
 import { ICourse } from '../course-list-item.model';
 import { CoursesService } from '../shared/services/courses.service';
 
@@ -17,7 +16,6 @@ export class AddEditCourseComponent implements OnInit {
   
   constructor(
     private router: Router,
-    private newCourseService: NewCourseService,
     private route: ActivatedRoute,
     private coursesService: CoursesService, 
   ) { }
@@ -28,7 +26,6 @@ export class AddEditCourseComponent implements OnInit {
   }
 
   onCancel() {
-    this.newCourseService.addNewCourseActive.next(false);
     this.router.navigate(['../'], {relativeTo: this.route});
   }
 

@@ -12,6 +12,7 @@ import { CoursesService } from './shared/services/courses.service';
 import { AddEditCourseComponent } from './add-edit-course/add-edit-course.component';
 import { DurationPipe } from './shared/pipes/duration.pipe';
 import { CourseHighlightDirective } from './shared/directives/course-highlight.directive';
+import { EntryPageComponent } from './entry-page/entry-page.component';
 
 @NgModule({
   imports: [
@@ -28,6 +29,7 @@ import { CourseHighlightDirective } from './shared/directives/course-highlight.d
     OrderByDatePipe,
     FilterByUserInputPipe,
     AddEditCourseComponent,
+    EntryPageComponent,
   ],
   providers: [
     OrderByDatePipe,

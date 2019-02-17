@@ -1,6 +1,5 @@
 import { Component, Output, EventEmitter } from '@angular/core';
 
-import { NewCourseService } from '../shared/services/newCourse.service';
 
 @Component({
   selector: 'app-search-control',
@@ -13,17 +12,11 @@ export class SearchControlComponent {
 
   userSearch: string;
 
-  constructor( private newCourseService: NewCourseService ) { }
-
   getUserSearch() {
     this.userSearchEntered.emit(this.userSearch);
   }
 
   onSearchFocus() {
     this.showAllItems.emit(true);
-  }
-
-  onAddClicked() {
-    this.newCourseService.addNewCourseActive.next(true);
   }
 }
