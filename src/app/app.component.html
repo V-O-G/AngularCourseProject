@@ -1,6 +1,6 @@
 <div class="wrapper">
   <app-header></app-header>
-  <app-breadcrumbs></app-breadcrumbs>
+  <app-breadcrumbs *ngIf="breadcrumbsActive"></app-breadcrumbs>
   <router-outlet></router-outlet>
 </div>
 <app-footer class="footer"></app-footer> 
