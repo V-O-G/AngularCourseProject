@@ -22,3 +22,15 @@
  .no-data-message {
     text-transform: none;
  }
+
+ .action-button {
+    display: flex;
+    justify-content: flex-end;
+    padding-bottom: 12px;
+}
+
+.add-course-button {
+    width: 138px;
+    height: 36px;
+    background-color: #30b6dd;
+}

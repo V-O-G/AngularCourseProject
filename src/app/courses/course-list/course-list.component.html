@@ -3,6 +3,13 @@
     (userSearchEntered)="getUserSearchInput($event)"
     (showAllCourses)="showAllCourses($event)"
   ></app-search-control>
+  <div class="action-button">
+    <button 
+      class="add-course-button"
+      (click)="onAddCourse()">
+      Add course
+    </button>
+  </div> 
   <div 
     *ngFor="let course of coursesList" 
     class="course-list"

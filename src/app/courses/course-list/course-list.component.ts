@@ -4,6 +4,7 @@ import { ICourse } from '../course-list-item.model';
 import { FilterByUserInputPipe } from '../shared/pipes/filter-by-user-intup.pipe';
 import { CoursesService } from '../shared/services/courses.service';
 import { OrderByDatePipe } from '../shared/pipes/order-by-date.pipe';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-course-list',
@@ -16,6 +17,8 @@ export class CourseListComponent implements OnInit {
     private filterByUserInput: FilterByUserInputPipe,
     private orderByDatePipe: OrderByDatePipe,
     private coursesService: CoursesService,
+    private router: Router,
+    private route: ActivatedRoute,
   ) { 
   }
 
@@ -43,5 +46,9 @@ export class CourseListComponent implements OnInit {
     if (showCourses) {
       this.coursesList = this.coursesService.getCourses();
     }
+  }
+
+  onAddCourse() {
+    this.router.navigate(['./new'], {relativeTo: this.route});
   }
 }
