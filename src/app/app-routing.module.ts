@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { CourseListComponent } from './courses/course-list/course-list.component';
 import { AddEditCourseComponent } from './courses/add-edit-course/add-edit-course.component';
 import { PageNotFoundComponent } from './core/page-not-found/page-not-found.component';
-import { LoginComponent } from './login/login/login.compont';
+import { LoginComponent } from './login/login.compont';
 import { AuthGuard } from './core/shared/services/auth-guard.service';
 import { EntryPageComponent } from './courses/entry-page/entry-page.component';
 

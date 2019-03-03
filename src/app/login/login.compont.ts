@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { AuthorizationService } from '../../core/shared/services/authorization.service';
+import { AuthorizationService } from '../core/shared/services/authorization.service';
 
 @Component({
   selector: 'login-page',
@@ -17,10 +17,13 @@ export class LoginComponent {
   ) {}
 
   onLoginClick(email: string, password: string) {
-    this.authorizationService.login(email, password);
-    this.isUserLoggedIn = this.authorizationService.isAuthenticated();
-    if(this.isUserLoggedIn) {
-      this.router.navigate(['/courses']);
-    }
+    this.authorizationService.login(email, password)
+      .subscribe(
+        (tokenData: {token: string}) => {
+          this.authorizationService.saveTokenToLocalStorage(tokenData.token);
+          this.router.navigate(['/courses']);
+        },
+        (error) => console.log(error)
+      );
   }  
 }

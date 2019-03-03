@@ -1,42 +1,49 @@
 import { Subject } from "rxjs";
 import { Router } from "@angular/router";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { Headers } from '@angular/http';
+
+const LOGIN_URL = 'http://localhost:3004/auth/login';
+const USERINFO_URL = 'http://localhost:3004/auth/userinfo';
 
 
 export class AuthorizationService {
     isUserLoggedIn = new Subject();
+    userToken: string = localStorage.getItem('userToken');
 
-    userInfo = {
-        'email': 'JonDoe@mail.com',
-        'password': 'Jonny123'
-    } 
+    constructor(
+        private http: HttpClient,
+    ) { }
 
-    constructor(private router: Router) {
-    }
-
-    login(email: string, password: string) {
-        localStorage.setItem('userInfo', JSON.stringify({
-            'email': email,
-            'password': password
-        }));
-        this.isAuthenticated();
+    login(login: string, password: string) {
+        return this.http.post(`${LOGIN_URL}`, {login: login, password: password});
     }
     logout() {
-        localStorage.removeItem('userInfo');
+        this.userToken = null;
         this.isAuthenticated();
     }
     isAuthenticated() {
-        const passedInUserInfo = this.getUserInfo();
-        if (passedInUserInfo 
-            && passedInUserInfo.email === this.userInfo.email 
-            && passedInUserInfo.password === this.userInfo.password) {
-                this.isUserLoggedIn.next(true);
-                return true;
+        const userToken = localStorage.getItem('userToken'); 
+        if (userToken) {
+            this.userToken = userToken;
+            this.isUserLoggedIn.next(true);
+            return true;
         } else {
             this.isUserLoggedIn.next(false);
             return false;
         }
     }
     getUserInfo() {
-        return JSON.parse(localStorage.getItem('userInfo'));
+        this.isAuthenticated();
+        const httpOptions = {
+            headers: new HttpHeaders({
+              'Authorization': this.userToken
+            })
+          };
+        return this.http.post(`${USERINFO_URL}`, {fakeToken: this.userToken}, httpOptions);
+    }
+    saveTokenToLocalStorage(token: string) {
+        localStorage.setItem('userToken', `${token}`);
+        this.isAuthenticated();
     }
 }

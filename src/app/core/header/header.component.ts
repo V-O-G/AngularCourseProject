@@ -10,8 +10,9 @@ import { AuthorizationService } from '../shared/services/authorization.service';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  userLogin: string;
+  userInfo;
   isUserLoggedIn: boolean;
+  subscription;
 
   constructor(
     public authorizationService: AuthorizationService,
@@ -19,14 +20,20 @@ export class HeaderComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.userLogin = this.authorizationService.getUserInfo();
+    this.authorizationService.isAuthenticated();
     this.authorizationService.isUserLoggedIn.subscribe(
-      (isLoggenIn: boolean) => {
-        this.isUserLoggedIn = isLoggenIn;
+      (isLoggedIn: boolean) => {
+        this.isUserLoggedIn = isLoggedIn;
       }
     );
-    this.authorizationService.isAuthenticated();
-  }
+    this.subscription = this.authorizationService.getUserInfo()
+    .subscribe(
+      (courses: any) => {
+        this.userInfo = courses; 
+      },
+      (error) => console.log(error)
+    );
+  };
 
   onLogOff() {
     this.authorizationService.logout();
