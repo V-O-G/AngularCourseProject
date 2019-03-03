@@ -1,35 +1,24 @@
 import { Injectable, EventEmitter } from "@angular/core";
 
 import { ICourse, CourseListItem } from "../../course-list-item.model";
+import { HttpClient } from "@angular/common/http";
+
+const BASE_URL = 'http://localhost:3004/courses';
 
 
 @Injectable()
 export class CoursesService {
-    courses: ICourse[] = [
-        {
-          id: 1,
-          title: 'Video Course 1',
-          creationDate: new Date(2020, 0, 1),
-          duration: 150,
-          description: 'upcoming course',
-          topRated: false
-        },
-        {
-          id: 2,
-          title: 'Video Course 2',
-          creationDate: new Date(2001, 0, 1),
-          duration: 150,
-          description: 'old course',
-          topRated: true
-        },  
-    ];
+    courses: ICourse[] = [];
 
-    constructor() {
-        this.createInitialCourses();
+    constructor(private http: HttpClient) {
     }
 
-    getCourses() {
-        return this.courses.slice();
+    getCourses(count: string) {
+        return this.http.get<CourseListItem[]>(`${BASE_URL}`, {params: {count}});
+    }
+
+    getCoursesSearchResult(textFragment: string, count: string) {
+        return this.http.get<CourseListItem[]>(`${BASE_URL}`, {params: {textFragment, count}});
     }
 
     addCourse(newCourse: ICourse) {
@@ -52,20 +41,6 @@ export class CoursesService {
     removeCourse(courseToRemoveId: number) {
         const courseToRemove = this.getCourseIndex(courseToRemoveId);
         this.courses.splice(courseToRemove, 1);
-    }
-
-    private createInitialCourses() {
-        const courseDescription = 'Learn about where you can find course descriptions, what information they include, how they work, and details about various components of a course description. Course descriptions report information about a university or college\'s classes. They\'re published both in course catalogs that outline degree requirements and in course schedules that contain descriptions for all courses offered during a particular semester.';
-        for (let i=3; i<8; i++) {
-            const courseItem: ICourse = new CourseListItem (
-            i,
-            `Video Course ${i}`,
-            Math.random()*100,
-            courseDescription
-            );
-    
-            this.courses.push(courseItem);
-        };
     }
 
     private getCourseIndex(courseId: number) {

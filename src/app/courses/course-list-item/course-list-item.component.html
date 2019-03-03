@@ -1,14 +1,14 @@
 <div 
-  [appCourseHighlight]="course.creationDate"
+  [appCourseHighlight]="course.date"
   class="course-container"
 >
   <div class="course-item_header">
     <div class="course-title">
         <h3 class="course-title-text shared-title">
-            {{ course.title | uppercase }}
+            {{ course.name | uppercase }}
         </h3>
         <div
-          *ngIf="course.topRated" 
+          *ngIf="course.isTopRated" 
           class="course-title_top-raited-icon"
         >
             <img class="top-raited-icon" src="../../../assets/images/topRated-icon.png" alt="topRated">
@@ -16,10 +16,10 @@
     </div>   
     <div class="course_additional-info">
       <div class="course-duration">
-          {{ course.duration | duration }}
+          {{ course.length | duration }}
       </div>
       <div class="course-date">
-        {{ course.creationDate | date: 'mediumDate' }}
+        {{ course.date | date: 'mediumDate' }}
       </div>
     </div> 
   </div>

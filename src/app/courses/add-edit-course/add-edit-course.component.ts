@@ -36,7 +36,6 @@ export class AddEditCourseComponent implements OnInit {
   getCourseInfo() {
     if (this.courseId) {
       this.course = this.coursesService.getCourseById(this.courseId);
-      console.log(this.course);
     }
   }
 }

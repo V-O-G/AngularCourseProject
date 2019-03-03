@@ -15,7 +15,7 @@ export class FilterByUserInputPipe implements PipeTransform {
     }
     const resultArray = [];
     for (const item of courses) {
-      if (item.title.includes(filterString)) {
+      if (item.name.includes(filterString)) {
         resultArray.push(item);
       }
     }

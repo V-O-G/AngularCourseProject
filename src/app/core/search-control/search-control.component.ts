@@ -8,7 +8,7 @@ import { Component, Output, EventEmitter } from '@angular/core';
 })
 export class SearchControlComponent {
   @Output() userSearchEntered = new EventEmitter<string>();
-  @Output() showAllItems = new EventEmitter<boolean>();
+  @Output() showAllCourses = new EventEmitter<boolean>();
 
   userSearch: string;
 
@@ -17,6 +17,6 @@ export class SearchControlComponent {
   }
 
   onSearchFocus() {
-    this.showAllItems.emit(true);
+    this.showAllCourses.emit(true);
   }
 }

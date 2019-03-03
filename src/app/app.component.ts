@@ -1,7 +1,6 @@
 import { Component, OnInit, OnChanges } from '@angular/core';
-import { Location } from '@angular/common';
-import { Router } from '@angular/router';
 import { AuthorizationService } from './core/shared/services/authorization.service';
+import { ICourse } from './courses/course-list-item.model';
 
 
 @Component({
@@ -10,9 +9,12 @@ import { AuthorizationService } from './core/shared/services/authorization.servi
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
+  courses: ICourse[] = [];
   breadcrumbsActive: boolean = true;
 
-  constructor(private authorizationService: AuthorizationService) {}
+  constructor(
+    private authorizationService: AuthorizationService,
+  ) {}
 
   ngOnInit() {
     this.authorizationService.isUserLoggedIn.subscribe(

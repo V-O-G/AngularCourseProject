@@ -12,6 +12,9 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./course-list.component.scss']
 })
 export class CourseListComponent implements OnInit {
+  coursesList: ICourse[] = [];
+  count: string = '10';
+  subscription;
 
   constructor( 
     private filterByUserInput: FilterByUserInputPipe,
@@ -22,29 +25,50 @@ export class CourseListComponent implements OnInit {
   ) { 
   }
 
-  coursesList: ICourse[];
-
   ngOnInit() {
-    this.coursesList = this.orderByDatePipe.transform(this.coursesService.getCourses());
+    this.subscription = this.coursesService.getCourses(this.count)
+      .subscribe(
+        (courses: ICourse[]) => {
+          this.coursesList = this.orderByDatePipe.transform(courses); 
+        },
+        (error) => console.log(error)
+      );
   }
   
   onCourseDeleted(courseId: number) {
     this.coursesService.removeCourse(courseId);
-    this.coursesList = this.orderByDatePipe.transform(this.coursesService.getCourses());
   }
 
   onLoadMore() {
-    console.log("load more");
+    this.count = (+this.count + 5).toString();
+    this.coursesService.getCourses(this.count)
+      .subscribe(
+        (courses: ICourse[]) => {
+          this.coursesList = this.orderByDatePipe.transform(courses); 
+        },
+        (error) => console.log(error)
+      );
   }
 
   getUserSearchInput(userSearchInput: string) {
-    this.coursesList = this.coursesService.getCourses();
-    this.coursesList = this.filterByUserInput.transform(this.coursesList, userSearchInput);
+    this.coursesService.getCoursesSearchResult(userSearchInput, this.count)
+      .subscribe(
+        (courses: ICourse[]) => {
+          this.coursesList = this.orderByDatePipe.transform(courses); 
+        },
+        (error) => console.log(error)
+      );
   }
 
   showAllCourses(showCourses: boolean) {
     if (showCourses) {
-      this.coursesList = this.coursesService.getCourses();
+      this.coursesService.getCourses(this.count)
+      .subscribe(
+        (courses: ICourse[]) => {
+          this.coursesList = this.orderByDatePipe.transform(courses); 
+        },
+        (error) => console.log(error)
+      );
     }
   }
 

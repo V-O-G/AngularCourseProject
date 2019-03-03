@@ -10,6 +10,6 @@ import { ICourse } from '../../course-list-item.model';
 export class OrderByDatePipe implements PipeTransform {
 
   transform(courses: ICourse[]): ICourse[] {
-    return courses ? courses.sort((a,b) => +b.creationDate - +a.creationDate) : null;
+    return courses ? courses.sort((a,b) => +b.date - +a.date) : null;
   } 
 }

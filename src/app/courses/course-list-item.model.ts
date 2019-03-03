@@ -1,27 +1,32 @@
+import { IAuthor } from "./author.model";
+
 export interface ICourse {
     id: number;
-    title: string;
-    creationDate: Date;
-    duration: number;
+    name: string;
     description: string;
-    topRated: boolean;
+    isTopRated: boolean;
+    date: Date;
+    authors: IAuthor[],
+    length: number;    
 }
 
 export class CourseListItem implements ICourse {
     
     id: number;
-    title: string;
-    creationDate: Date;
-    duration: number;
+    name: string;
     description: string;
-    topRated: boolean;
+    isTopRated: boolean;
+    date: Date;
+    authors: IAuthor[];
+    length: number;    
 
-    constructor(id: number, title: string, duration: number, description: string) {
+    constructor(id: number, name: string,  description: string, authors: IAuthor[], length: number ) {
         this.id = id;
-        this.title = title;
-        this.creationDate = new Date();
-        this.duration = duration;
+        this.name = name;
         this.description = description;
-        this.topRated = false;
+        this.isTopRated = false;
+        this.date = new Date();
+        this.authors = authors;
+        this.length = length;    
     }
 } 
