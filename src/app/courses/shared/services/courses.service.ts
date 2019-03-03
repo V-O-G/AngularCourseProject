@@ -38,9 +38,8 @@ export class CoursesService {
         } 
     }
     
-    removeCourse(courseToRemoveId: number) {
-        const courseToRemove = this.getCourseIndex(courseToRemoveId);
-        this.courses.splice(courseToRemove, 1);
+    removeCourse(courseToRemoveId: string) {
+        return this.http.delete<CourseListItem[]>(`${BASE_URL}/${courseToRemoveId}`);   
     }
 
     private getCourseIndex(courseId: number) {

@@ -17,7 +17,6 @@ export class CourseListComponent implements OnInit {
   subscription;
 
   constructor( 
-    private filterByUserInput: FilterByUserInputPipe,
     private orderByDatePipe: OrderByDatePipe,
     private coursesService: CoursesService,
     private router: Router,
@@ -26,28 +25,34 @@ export class CourseListComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.callCourses();
+  }
+
+  callCourses() {
     this.subscription = this.coursesService.getCourses(this.count)
+    .subscribe(
+      (courses: ICourse[]) => {
+        this.coursesList = this.orderByDatePipe.transform(courses); 
+      },
+      (error) => console.log(error)
+    );
+  };
+  
+  onCourseDeleted(courseId: number) {
+    const courseIdToServer = courseId.toString();
+    this.coursesService.removeCourse(courseIdToServer)
       .subscribe(
-        (courses: ICourse[]) => {
-          this.coursesList = this.orderByDatePipe.transform(courses); 
+        () => {
+          this.callCourses();
         },
         (error) => console.log(error)
       );
-  }
-  
-  onCourseDeleted(courseId: number) {
-    this.coursesService.removeCourse(courseId);
+      
   }
 
   onLoadMore() {
     this.count = (+this.count + 5).toString();
-    this.coursesService.getCourses(this.count)
-      .subscribe(
-        (courses: ICourse[]) => {
-          this.coursesList = this.orderByDatePipe.transform(courses); 
-        },
-        (error) => console.log(error)
-      );
+    this.callCourses();
   }
 
   getUserSearchInput(userSearchInput: string) {
@@ -62,13 +67,7 @@ export class CourseListComponent implements OnInit {
 
   showAllCourses(showCourses: boolean) {
     if (showCourses) {
-      this.coursesService.getCourses(this.count)
-      .subscribe(
-        (courses: ICourse[]) => {
-          this.coursesList = this.orderByDatePipe.transform(courses); 
-        },
-        (error) => console.log(error)
-      );
+      this.callCourses();
     }
   }
 
