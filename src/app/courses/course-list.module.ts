@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { AppRoutingModule } from '../app-routing.module';
 
 import { CourseListComponent } from './course-list/course-list.component';
@@ -20,6 +20,7 @@ import { EntryPageComponent } from './entry-page/entry-page.component';
     FormsModule,
     CoreModule,
     AppRoutingModule,
+    ReactiveFormsModule,
   ],
   declarations: [
     CourseListComponent, 

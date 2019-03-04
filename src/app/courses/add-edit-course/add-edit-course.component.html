@@ -1,86 +1,101 @@
 <div class="add-course">
     <div class="add-course_container">
-        <div class="shared-title">
-            New course
-        </div>
-        <div class="add-course_form">
-            <div class="form-group">
-                <div class="label-group">
-                    <label>Title</label>
-                    <div class="label-info">*required</div>
-                </div>
-                <div class="input-container">
-                    <input
-                        class="shared-input full-size"
-                        placeholder="Text input"
-                    >
-                </div>                   
-                
+        <ng-container *ngIf="!loading">
+            <div class="shared-title">
+                New course
             </div>
-            <div class="form-group">
-                <div class="label-group">
-                    <label>Description</label>
-                    <div class="label-info">*required</div>
-                </div> 
-                <textarea 
-                    class="full-size"
-                    placeholder="Add description"
-                ></textarea>
-            </div>
-            <div class="form-group">
-                <div class="label-group small-width">
-                    <label>Duration</label>
-                    <div class="label-info">*required</div>
-                </div>
-                <div class="duration input-container">
-                    <input
-                        [(ngModel)]="durationInput"
-                        class="shared-input small-width"
-                        placeholder="minutes"
-                    >
-                    <div class="duration-input-output">
-                        {{ durationInput | duration }}
+            <form [formGroup]="signupForm" (ngSubmit)="onSubmit()" class="add-course_form">
+                <div class="form-group">
+                    <div class="label-group">
+                        <label>Title</label>
+                        <div class="label-info">*required</div>
                     </div>
-                </div>    
-            </div>
-            <div class="form-group small-width">
-                <div class="label-group">
-                    <label>Date</label>
-                    <div class="label-info">*required</div>
+                    <div class="input-container">
+                        <input
+                            formControlName="courseName"
+                            id="courseName"
+                            class="shared-input full-size"
+                            placeholder="Text input"
+                        >
+                    </div>                   
+                    
                 </div>
-                <div class="input-container">
-                    <input
-                        class="shared-input small-width"
-                        placeholder="mm-dd-yyyy"
-                    >
-                </div>     
-            </div>
-            <div class="form-group medium-width">
-                <div class="label-group">
-                    <label>Authors</label>
-                    <div class="label-info">*required</div>
-                </div> 
-                <div class="input-container">
-                    <input
-                        class="shared-input medium-width"
-                        placeholder="Start typing"
-                    >
+                <div class="form-group">
+                    <div class="label-group">
+                        <label>Description</label>
+                        <div class="label-info">*required</div>
+                    </div> 
+                    <textarea 
+                        formControlName="courseDescription"
+                        id="courseDescription"
+                        class="full-size"
+                        placeholder="Add description"
+                    ></textarea>
                 </div>
+                <div class="form-group">
+                    <div class="label-group small-width">
+                        <label>Duration</label>
+                        <div class="label-info">*required</div>
+                    </div>
+                    <div class="duration input-container">
+                        <input
+                            formControlName="courseLength"
+                            class="shared-input small-width"
+                            placeholder="minutes"
+                            #durationInput
+                        >
+                        <div class="duration-input-output">
+                            {{ durationInput.value | duration }}
+                        </div>
+                    </div>    
+                </div>
+                <div class="form-group small-width">
+                    <div class="label-group">
+                        <label>Date</label>
+                        <div class="label-info">*required</div>
+                    </div>
+                    <div class="input-container">
+                        <input
+                            formControlName="courseDate"
+                            class="shared-input small-width"
+                            placeholder="mm-dd-yyyy"
+                            disabled="true"
+                        >
+                    </div>     
+                </div>
+                <div class="form-group medium-width">
+                    <div class="label-group">
+                        <label>Authors</label>
+                        <div class="label-info">*required</div>
+                    </div> 
+                    <div class="input-container">
+                        <input
+                            formControlName="courseAuthors"
+                            class="shared-input medium-width"
+                            placeholder="Start typing"
+                        >
+                    </div>
+                </div>
+                <div class="add-course_controls">
+                    <button 
+                        (click)="onCancel()"
+                        class="cancel-button"
+                    >
+                        Cancel
+                    </button>
+                    <button
+                        type="submit"
+                        class="save-button"
+                    >
+                        Save
+                    </button>
+                </div>  
+            </form>  
+        </ng-container>
+        <ng-container *ngIf="loading">
+            <div>
+                Loading...
             </div>
-        </div>
-        <div class="add-course_controls">
-            <button 
-                (click)="onCancel()"
-                class="cancel-button"
-            >
-                Cancel
-            </button>
-            <button
-                (click)="onSave()"
-                class="save-button"
-            >
-                Save
-            </button>
-        </div>        
+        </ng-container>  
     </div>
 </div>

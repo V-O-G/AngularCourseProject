@@ -69,3 +69,6 @@ button {
 .duration-input-output {
     padding-left: 12px;
 }
+input.ng-invalid.ng-touched {
+    border: 1px solid red;
+}

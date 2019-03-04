@@ -21,21 +21,14 @@ export class CoursesService {
         return this.http.get<CourseListItem[]>(`${BASE_URL}`, {params: {textFragment, count}});
     }
 
-    addCourse(newCourse: ICourse) {
-        if(newCourse) {
-            this.courses.push(newCourse);
+    addCourse(course: string) {
+        if(course) {
+            return this.http.post(`${BASE_URL}`, {course});
         }
     }
 
-    getCourseById(courseId: number) {
-        return this.courses.find((course) => course.id === courseId);
-    }
-
-    updateCourse(updatedCourse: ICourse ) {
-        if(updatedCourse && updatedCourse.id) {
-            const courseToReplace = this.getCourseIndex(updatedCourse.id);
-            this.courses.splice(courseToReplace, 1, updatedCourse);
-        } 
+    getCourseById(id: number) {
+        return this.http.get<ICourse>(`${BASE_URL}/${id}`);   
     }
     
     removeCourse(courseToRemoveId: string) {
