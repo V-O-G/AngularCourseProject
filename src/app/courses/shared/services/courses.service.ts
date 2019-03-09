@@ -2,6 +2,8 @@ import { Injectable, EventEmitter } from "@angular/core";
 
 import { ICourse, CourseListItem } from "../../course-list-item.model";
 import { HttpClient } from "@angular/common/http";
+import { Observable } from "rxjs";
+import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
 
 const BASE_URL = 'http://localhost:3004/courses';
 
@@ -33,9 +35,5 @@ export class CoursesService {
     
     removeCourse(courseToRemoveId: string) {
         return this.http.delete<CourseListItem[]>(`${BASE_URL}/${courseToRemoveId}`);   
-    }
-
-    private getCourseIndex(courseId: number) {
-        return this.courses.findIndex((course) => course.id === courseId);
     }
 }

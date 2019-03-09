@@ -1,4 +1,9 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter, OnChanges, OnInit } from '@angular/core';
+import { fromEvent, Observable } from 'rxjs';
+import { map, filter, debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
+import { Subject } from 'rxjs';
+import { CoursesService } from 'src/app/courses/shared/services/courses.service';
+import { FormGroup, FormControl } from '@angular/forms';
 
 
 @Component({
@@ -6,17 +11,33 @@ import { Component, Output, EventEmitter } from '@angular/core';
   templateUrl: './search-control.component.html',
   styleUrls: ['./search-control.component.scss']
 })
-export class SearchControlComponent {
+export class SearchControlComponent implements OnInit {
   @Output() userSearchEntered = new EventEmitter<string>();
   @Output() showAllCourses = new EventEmitter<boolean>();
+  searchForm: FormGroup;
 
-  userSearch: string;
+  constructor(private coursesService: CoursesService) {}
 
-  getUserSearch() {
-    this.userSearchEntered.emit(this.userSearch);
+  ngOnInit() {
+    this.createForm();
+    this.searchForm.get('searchInput').valueChanges
+    .pipe(debounceTime(500))
+    .pipe(filter(text => text.length > 3))
+    .pipe(distinctUntilChanged())
+    .subscribe((value) => {
+      this.userSearchEntered.emit(value);
+    })
   }
 
   onSearchFocus() {
     this.showAllCourses.emit(true);
   }
+
+  private createForm() {
+    this.searchForm = new FormGroup({
+      'searchInput': new FormControl(null),
+    });  
+  }
+
+  // getCoursesSearchResult(textFragment: string, count: string)
 }
