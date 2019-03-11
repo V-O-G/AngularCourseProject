@@ -1,7 +1,6 @@
-import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
-import { UserInfo, IUser } from 'src/app/core/models/user.model';
 import { ICourse } from '../shared/models/course-list-item.model';
 
 @Component({
@@ -10,7 +9,8 @@ import { ICourse } from '../shared/models/course-list-item.model';
   styleUrls: ['./course-list-item.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class CourseListItemComponent implements OnInit {  
+
+export class CourseListItemComponent {  
   @Input() course: ICourse;
   @Output() courseDeleted = new EventEmitter<number>(); 
   
@@ -19,20 +19,8 @@ export class CourseListItemComponent implements OnInit {
     private route: ActivatedRoute,
   ) { }
 
-  ngOnInit() {
-  }
-
-  user: IUser = new UserInfo (
-    123,
-    'John',
-    'Doe'
-  );
-
   onCourseDelete() {
-    const courseToBeDeleted = confirm("Do you really want to delete this course?");
-    if(courseToBeDeleted) {
-      this.courseDeleted.emit(this.course.id);
-    }    
+    this.courseDeleted.emit(this.course.id);  
   }
 
   onCourseEdit() {
