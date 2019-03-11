@@ -12,6 +12,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { PageNotFoundComponent } from './core/page-not-found/page-not-found.component';
 import { AuthGuard } from './core/shared/services/auth-guard.service';
 import { CoursesService } from './courses/shared/services/courses.service';
+import { LoaderService } from './loader.service';
+import { MatProgressSpinnerModule } from '@angular/material';
+import { OverlayModule } from '@angular/cdk/overlay';
 
 
 @NgModule({
@@ -27,11 +30,14 @@ import { CoursesService } from './courses/shared/services/courses.service';
     LoginModule,
     AppRoutingModule,
     HttpClientModule,
+    MatProgressSpinnerModule,
+    OverlayModule,
   ],
   providers: [
     AuthorizationService,
     AuthGuard,
     CoursesService,
+    LoaderService,
   ],
   bootstrap: [AppComponent]
 })

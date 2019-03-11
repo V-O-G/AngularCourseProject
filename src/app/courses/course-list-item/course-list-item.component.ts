@@ -2,7 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectionStrategy
 import { Router, ActivatedRoute } from '@angular/router';
 
 import { UserInfo, IUser } from 'src/app/core/models/user.model';
-import { ICourse } from '../course-list-item.model';
+import { ICourse } from '../shared/models/course-list-item.model';
 
 @Component({
   selector: 'app-course-list-item',

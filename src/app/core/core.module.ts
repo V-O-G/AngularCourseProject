@@ -7,25 +7,30 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { SearchControlComponent } from './search-control/search-control.component';
 import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
+import { LoaderComponent } from './loader/loader.component';
+import { MatProgressSpinnerModule } from '@angular/material';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     RouterModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatProgressSpinnerModule,
   ],
   declarations: [
     HeaderComponent, 
     FooterComponent,
     BreadcrumbsComponent,
-    SearchControlComponent,  
+    SearchControlComponent,
+    LoaderComponent,  
   ],
   exports: [
     HeaderComponent,
     FooterComponent,
     BreadcrumbsComponent,
     SearchControlComponent,
+    LoaderComponent,
   ]
 })
 export class CoreModule { }

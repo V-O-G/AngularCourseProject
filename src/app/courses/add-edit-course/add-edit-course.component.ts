@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { ICourse } from '../course-list-item.model';
+import { ICourse } from '../shared/models/course-list-item.model';
 import { CoursesService } from '../shared/services/courses.service';
 import { FormGroup, FormControl, Validators, FormArray, FormControlName } from '@angular/forms';
 import { DatePipe } from '@angular/common';

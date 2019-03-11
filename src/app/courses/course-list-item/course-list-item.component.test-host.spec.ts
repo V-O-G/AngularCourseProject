@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from "@angular/platform-browser";
 import {Component} from "@angular/core";
 
-import { ICourse } from '../course-list-item.model';
+import { ICourse } from '../shared/models/course-list-item.model';
 import { CourseListItemComponent } from './course-list-item.component';
 import { DurationPipe } from '../shared/pipes/duration.pipe';
 import { CourseHighlightDirective } from '../shared/directives/course-highlight.directive';

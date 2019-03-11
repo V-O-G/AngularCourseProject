@@ -1,6 +1,6 @@
 import { Component, OnInit, OnChanges } from '@angular/core';
 
-import { ICourse } from '../course-list-item.model';
+import { ICourse } from '../shared/models/course-list-item.model';
 import { FilterByUserInputPipe } from '../shared/pipes/filter-by-user-intup.pipe';
 import { CoursesService } from '../shared/services/courses.service';
 import { OrderByDatePipe } from '../shared/pipes/order-by-date.pipe';

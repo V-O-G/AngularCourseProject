@@ -1,5 +1,5 @@
 import { FilterByUserInputPipe } from './filter-by-user-intup.pipe';
-import { ICourse } from '../../course-list-item.model';
+import { ICourse } from '../models/course-list-item.model';
 
 
 
