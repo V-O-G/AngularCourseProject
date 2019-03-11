@@ -20,6 +20,7 @@ export class AuthorizationService {
     }
     logout() {
         this.userToken = null;
+        localStorage.removeItem('userToken');
         this.isAuthenticated();
     }
     isAuthenticated() {
