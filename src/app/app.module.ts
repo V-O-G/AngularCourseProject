@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
@@ -15,6 +15,7 @@ import { CoursesService } from './courses/shared/services/courses.service';
 import { LoaderService } from './loader.service';
 import { MatProgressSpinnerModule } from '@angular/material';
 import { OverlayModule } from '@angular/cdk/overlay';
+import { AuthInterceptor } from './auth-interceptor';
 
 
 @NgModule({
@@ -34,6 +35,7 @@ import { OverlayModule } from '@angular/cdk/overlay';
     OverlayModule,
   ],
   providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     AuthorizationService,
     AuthGuard,
     CoursesService,
