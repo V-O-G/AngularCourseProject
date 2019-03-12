@@ -9,6 +9,7 @@ const USERINFO_URL = 'http://localhost:3004/auth/userinfo';
 
 export class AuthorizationService {
     isUserLoggedIn = new Subject();
+    userInfo = new Subject();
     userToken: string = localStorage.getItem('userToken');
 
     constructor(
@@ -35,13 +36,16 @@ export class AuthorizationService {
         }
     }
     getUserInfo() {
-        this.isAuthenticated();
-        const httpOptions = {
-            headers: new HttpHeaders({
-              'Authorization': this.userToken
-            })
-          };
-        return this.http.post(`${USERINFO_URL}`, {fakeToken: this.userToken}, httpOptions);
+        return this.http.post(`${USERINFO_URL}`, {fakeToken: this.userToken});
+    }
+    subscribeTouserInfo(token: string) {
+        this.getUserInfo()
+            .subscribe(
+                (userInfo: any) => {
+                    this.userInfo.next(userInfo); 
+                },
+            (error) => console.log(error)
+        );
     }
     saveTokenToLocalStorage(token: string) {
         localStorage.setItem('userToken', `${token}`);
