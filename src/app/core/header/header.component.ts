@@ -10,9 +10,8 @@ import { AuthorizationService } from '../shared/services/authorization.service';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  userInfo;
+  userInfo = {};
   isUserLoggedIn: boolean;
-  subscription;
 
   constructor(
     public authorizationService: AuthorizationService,
@@ -27,6 +26,7 @@ export class HeaderComponent implements OnInit {
     this.authorizationService.isUserLoggedIn.subscribe(
       (isLoggedIn: boolean) => {
         this.isUserLoggedIn = isLoggedIn;
+        this.userInfo['login'] = localStorage.getItem('userLogin');
       }
     );
   };

@@ -35,14 +35,15 @@ export class AuthorizationService {
             return false;
         }
     }
-    getUserInfo() {
-        return this.http.post(`${USERINFO_URL}`, {fakeToken: this.userToken});
+    getUserInfo(token: string) {
+        return this.http.post(`${USERINFO_URL}`, {fakeToken: token});
     }
     subscribeTouserInfo(token: string) {
-        this.getUserInfo()
+        this.getUserInfo(token)
             .subscribe(
                 (userInfo: any) => {
-                    this.userInfo.next(userInfo); 
+                    this.userInfo.next(userInfo);
+                    localStorage.setItem('userLogin', `${userInfo.login}`); 
                 },
             (error) => console.log(error)
         );
