@@ -19,7 +19,10 @@
       (courseDeleted)="onCourseDeleted($event)"  
     ></app-course-list-item>
     </div>
-    <div class="load-more-container">
+    <div
+      *ngIf="coursesList"
+      class="load-more-container"
+    >
       <button 
         (click)="onLoadMore()" 
         *ngIf="coursesList.length; else noCoursesAdded"

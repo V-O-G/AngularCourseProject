@@ -12,7 +12,7 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./course-list.component.scss']
 })
 export class CourseListComponent implements OnInit {
-  coursesList: ICourse[] = [];
+  coursesList: ICourse[];
   count: string = '10';
   subscription;
 
