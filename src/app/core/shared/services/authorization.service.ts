@@ -1,7 +1,5 @@
 import { Subject } from "rxjs";
-import { Router } from "@angular/router";
-import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { Headers } from '@angular/http';
+import { HttpClient } from "@angular/common/http";
 
 const LOGIN_URL = 'http://localhost:3004/auth/login';
 const USERINFO_URL = 'http://localhost:3004/auth/userinfo';
