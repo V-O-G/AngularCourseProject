@@ -10,7 +10,8 @@ const USERINFO_URL = 'http://localhost:3004/auth/userinfo';
 export class AuthorizationService {
     isUserLoggedIn = new Subject();
     userInfo = new Subject();
-    userToken: string = localStorage.getItem('userToken');
+    private token: string = 'userToken';
+    userToken: string = localStorage.getItem(this.token);
 
     constructor(
         private http: HttpClient,
@@ -21,11 +22,11 @@ export class AuthorizationService {
     }
     logout() {
         this.userToken = null;
-        localStorage.removeItem('userToken');
+        localStorage.removeItem(this.token);
         this.isAuthenticated();
     }
     isAuthenticated() {
-        const userToken = localStorage.getItem('userToken'); 
+        const userToken = localStorage.getItem(this.token); 
         if (userToken) {
             this.userToken = userToken;
             this.isUserLoggedIn.next(true);
@@ -49,7 +50,7 @@ export class AuthorizationService {
         );
     }
     saveTokenToLocalStorage(token: string) {
-        localStorage.setItem('userToken', `${token}`);
+        localStorage.setItem(this.token, `${token}`);
         this.isAuthenticated();
     }
 }
