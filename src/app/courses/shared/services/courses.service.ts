@@ -4,8 +4,8 @@ import { ICourse, CourseListItem } from "../models/course-list-item.model";
 import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
-import { LoaderService } from "src/app/loader.service";
 import { finalize } from 'rxjs/operators';
+import { LoaderService } from "src/app/core/shared/services/loader.service";
 
 const BASE_URL = 'http://localhost:3004/courses';
 

@@ -12,10 +12,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { PageNotFoundComponent } from './core/page-not-found/page-not-found.component';
 import { AuthGuard } from './core/shared/services/auth-guard.service';
 import { CoursesService } from './courses/shared/services/courses.service';
-import { LoaderService } from './loader.service';
 import { MatProgressSpinnerModule } from '@angular/material';
 import { OverlayModule } from '@angular/cdk/overlay';
-import { AuthInterceptor } from './auth-interceptor';
+import { AuthInterceptor } from './core/auth-interceptor';
+import { LoaderService } from './core/shared/services/loader.service';
 
 
 @NgModule({
