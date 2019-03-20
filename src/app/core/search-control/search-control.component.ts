@@ -24,7 +24,7 @@ export class SearchControlComponent implements OnInit {
     this.createForm();
     this.searchForm.get('searchInput').valueChanges
     .pipe(debounceTime(this.debounceTime))
-    .pipe(filter(text => text.length > this.minLength))
+    .pipe(filter(text => text.length > this.minLengthForSearch))
     .pipe(distinctUntilChanged())
     .subscribe((value) => {
       this.userSearchEntered.emit(value);
