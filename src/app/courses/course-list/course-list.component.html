@@ -1,5 +1,7 @@
 <div class="container">
   <app-search-control
+    [debounceTime]="500"
+    [minLengthForSearch]="3"
     (userSearchEntered)="getUserSearchInput($event)"
     (showAllCourses)="showAllCourses($event)"
   ></app-search-control>
