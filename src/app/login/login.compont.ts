@@ -21,7 +21,7 @@ export class LoginComponent {
       .subscribe(
         (tokenData: {token: string}) => {
           this.authorizationService.saveTokenToLocalStorage(tokenData.token);
-          this.authorizationService.subscribeTouserInfo(tokenData.token);
+          this.authorizationService.getUserInfo(tokenData.token);
           this.router.navigate(['/courses']);
         },
         (error) => console.log(error)
