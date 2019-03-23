@@ -9,7 +9,6 @@ export class AuthorizationService {
     isUserLoggedIn = new BehaviorSubject<boolean>(false);
     userInfo = new Subject();
     private token: string = 'userToken';
-    userToken: string = localStorage.getItem(this.token);
 
     constructor(
         private http: HttpClient,
@@ -19,14 +18,13 @@ export class AuthorizationService {
         return this.http.post(`${LOGIN_URL}`, {login: login, password: password});
     }
     logout() {
-        this.userToken = null;
         localStorage.removeItem(this.token);
         this.isUserLoggedIn.next(false);
     }
     isAuthenticated() {
         const userToken = localStorage.getItem(this.token); 
         if (userToken) {
-            this.userToken = userToken;
+            this.getUserInfo(userToken);
             this.isUserLoggedIn.next(true);
         } else {
             this.isUserLoggedIn.next(false);
@@ -37,7 +35,6 @@ export class AuthorizationService {
         .subscribe(
             (userInfo: any) => {
                 this.userInfo.next(userInfo);
-                localStorage.setItem('userLogin', `${userInfo.login}`); 
             },
         (error) => console.log(error));
     }

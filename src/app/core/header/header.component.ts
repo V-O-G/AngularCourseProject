@@ -25,7 +25,6 @@ export class HeaderComponent implements OnInit {
     this.authorizationService.isUserLoggedIn.subscribe(
       (isLoggedIn: boolean) => {
         this.isUserLoggedIn = isLoggedIn;
-        this.userInfo['login'] = localStorage.getItem('userLogin');
       }
     );
   };

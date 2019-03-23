@@ -20,7 +20,7 @@ export class AppComponent implements OnInit {
     this.authorizationService.isAuthenticated();
     this.authorizationService.isUserLoggedIn.subscribe(
       (loggedIn: boolean) => {
-        this.breadcrumbsActive = loggedIn
+        this.breadcrumbsActive = loggedIn;
       }
     );
   }
