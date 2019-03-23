@@ -17,6 +17,7 @@ export class AppComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.authorizationService.isAuthenticated();
     this.authorizationService.isUserLoggedIn.subscribe(
       (loggedIn: boolean) => {
         this.breadcrumbsActive = loggedIn

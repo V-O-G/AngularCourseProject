@@ -1,4 +1,4 @@
-import { Subject } from "rxjs";
+import { Subject, BehaviorSubject } from "rxjs";
 import { HttpClient } from "@angular/common/http";
 
 const LOGIN_URL = 'http://localhost:3004/auth/login';
@@ -6,7 +6,7 @@ const USERINFO_URL = 'http://localhost:3004/auth/userinfo';
 
 
 export class AuthorizationService {
-    isUserLoggedIn = new Subject();
+    isUserLoggedIn = new BehaviorSubject<boolean>(false);
     userInfo = new Subject();
     private token: string = 'userToken';
     userToken: string = localStorage.getItem(this.token);
@@ -21,17 +21,15 @@ export class AuthorizationService {
     logout() {
         this.userToken = null;
         localStorage.removeItem(this.token);
-        this.isAuthenticated();
+        this.isUserLoggedIn.next(false);
     }
     isAuthenticated() {
         const userToken = localStorage.getItem(this.token); 
         if (userToken) {
             this.userToken = userToken;
             this.isUserLoggedIn.next(true);
-            return true;
         } else {
             this.isUserLoggedIn.next(false);
-            return false;
         }
     }
     getUserInfo(token: string) {
@@ -46,6 +44,5 @@ export class AuthorizationService {
 
     saveTokenToLocalStorage(token: string) {
         localStorage.setItem(this.token, `${token}`);
-        this.isAuthenticated();
     }
 }
