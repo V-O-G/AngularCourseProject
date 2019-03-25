@@ -4,7 +4,8 @@ import { ICourse } from '../shared/models/course-list-item.model';
 import { CoursesService } from '../shared/services/courses.service';
 import { FormGroup, FormControl, Validators, FormArray, FormControlName } from '@angular/forms';
 import { DatePipe } from '@angular/common';
-import numberValidator from '../shared/directives/number-validator-func';
+import numberValidator from '../shared/validation-functions/number-validator';
+import dateValidator from '../shared/validation-functions/date-validator';
 
 @Component({
   selector: 'add-edit-course',
@@ -86,7 +87,7 @@ export class AddEditCourseComponent implements OnInit {
     const courseDate = datePipe.transform(
       this.courseToEdit 
       ? this.courseToEdit.date 
-      : this.dateNow, 'shortDate');
+      : this.dateNow, 'dd/MM/yyyy');
     const authors = this.courseToEdit 
       ? this.courseToEdit.authors.map((author) => {
         return `${author.firstName} ${author.lastName}`
@@ -100,9 +101,9 @@ export class AddEditCourseComponent implements OnInit {
       'courseDescription': new FormControl(this.courseToEdit ? this.courseToEdit.description : null, [Validators.required]),
       'courseLength': new FormControl(
         this.courseToEdit ? this.courseToEdit.length : null, 
-        [Validators.required]
+        [Validators.required, numberValidator]
       ),
-      'courseDate': new FormControl(courseDate, [Validators.required]),
+      'courseDate': new FormControl(courseDate, [Validators.required, dateValidator]),
       'courseAuthors': new FormControl(authors, [Validators.required]),
     });  
   }

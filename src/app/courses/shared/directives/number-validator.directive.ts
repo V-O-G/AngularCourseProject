@@ -1,7 +1,7 @@
 import { Directive, Input } from '@angular/core';
 import { NG_VALIDATORS, Validator } from '@angular/forms';
 
-import numberValidator from './number-validator-func';
+import numberValidator from '../validation-functions/number-validator';
 
 @Directive({
   selector: '[numberValidator]',

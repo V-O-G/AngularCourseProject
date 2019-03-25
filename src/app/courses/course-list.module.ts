@@ -15,6 +15,7 @@ import { CourseHighlightDirective } from './shared/directives/course-highlight.d
 import { EntryPageComponent } from './entry-page/entry-page.component';
 import { LabelInfoComponent } from './add-edit-course/label-info/label-info.component';
 import { NumberValidator } from './shared/directives/number-validator.directive';
+import { DateValidator } from './shared/directives/date-validator.directive';
 
 @NgModule({
   imports: [
@@ -35,6 +36,7 @@ import { NumberValidator } from './shared/directives/number-validator.directive'
     EntryPageComponent,
     LabelInfoComponent,
     NumberValidator,
+    DateValidator,
   ],
   providers: [
     OrderByDatePipe,
