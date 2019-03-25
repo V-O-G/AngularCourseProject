@@ -24,15 +24,15 @@ export class SearchControlComponent implements OnInit {
     this.createForm();
     this.searchForm.get('searchInput').valueChanges
     .pipe(debounceTime(this.debounceTime))
-    .pipe(filter(text => text.length > this.minLengthForSearch))
+    .pipe(filter(text => text.length > this.minLengthForSearch || text.length === 0))
     .pipe(distinctUntilChanged())
     .subscribe((value) => {
-      this.userSearchEntered.emit(value);
+      if(value.length === 0) {
+        this.showAllCourses.emit(true);
+      } else {
+        this.userSearchEntered.emit(value);
+      }
     })
-  }
-
-  onSearchFocus() {
-    this.showAllCourses.emit(true);
   }
 
   private createForm() {
