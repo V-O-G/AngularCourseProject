@@ -16,6 +16,8 @@ import { MatProgressSpinnerModule } from '@angular/material';
 import { OverlayModule } from '@angular/cdk/overlay';
 import { AuthInterceptor } from './core/auth-interceptor';
 import { LoaderService } from './core/shared/services/loader.service';
+import { StoreModule } from '@ngrx/store';
+import { reducers, metaReducers } from './reducers';
 
 
 @NgModule({
@@ -33,6 +35,7 @@ import { LoaderService } from './core/shared/services/loader.service';
     HttpClientModule,
     MatProgressSpinnerModule,
     OverlayModule,
+    StoreModule.forRoot(reducers, { metaReducers }),
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },

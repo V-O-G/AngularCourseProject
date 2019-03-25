@@ -4,6 +4,7 @@ import { ICourse } from '../shared/models/course-list-item.model';
 import { CoursesService } from '../shared/services/courses.service';
 import { FormGroup, FormControl, Validators, FormArray, FormControlName } from '@angular/forms';
 import { DatePipe } from '@angular/common';
+import numberValidator from '../shared/directives/number-validator-func';
 
 @Component({
   selector: 'add-edit-course',
@@ -74,6 +75,11 @@ export class AddEditCourseComponent implements OnInit {
     return JSON.stringify(newCourse);    
   }
 
+  checkIfValid(controlName) {
+    const control = this.signupForm.get(controlName);
+    return control.valid ? true: control.touched ? false : true;
+  }
+
   private createForm() {
     this.loading = false;
     const datePipe = new DatePipe('en-US');
@@ -87,9 +93,15 @@ export class AddEditCourseComponent implements OnInit {
       }).join() 
       : null;
     this.signupForm = new FormGroup({
-      'courseName': new FormControl(this.courseToEdit ? this.courseToEdit.name : null, [Validators.required]),
+      'courseName': new FormControl(
+        this.courseToEdit ? this.courseToEdit.name : null, 
+        [Validators.required]
+      ),
       'courseDescription': new FormControl(this.courseToEdit ? this.courseToEdit.description : null, [Validators.required]),
-      'courseLength': new FormControl(this.courseToEdit ? this.courseToEdit.length : null, [Validators.required]),
+      'courseLength': new FormControl(
+        this.courseToEdit ? this.courseToEdit.length : null, 
+        [Validators.required]
+      ),
       'courseDate': new FormControl(courseDate, [Validators.required]),
       'courseAuthors': new FormControl(authors, [Validators.required]),
     });  

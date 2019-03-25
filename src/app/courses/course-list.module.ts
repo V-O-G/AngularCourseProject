@@ -13,6 +13,8 @@ import { AddEditCourseComponent } from './add-edit-course/add-edit-course.compon
 import { DurationPipe } from './shared/pipes/duration.pipe';
 import { CourseHighlightDirective } from './shared/directives/course-highlight.directive';
 import { EntryPageComponent } from './entry-page/entry-page.component';
+import { LabelInfoComponent } from './add-edit-course/label-info/label-info.component';
+import { NumberValidator } from './shared/directives/number-validator.directive';
 
 @NgModule({
   imports: [
@@ -31,6 +33,8 @@ import { EntryPageComponent } from './entry-page/entry-page.component';
     FilterByUserInputPipe,
     AddEditCourseComponent,
     EntryPageComponent,
+    LabelInfoComponent,
+    NumberValidator,
   ],
   providers: [
     OrderByDatePipe,

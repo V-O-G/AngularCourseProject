@@ -9,7 +9,7 @@ import { LoaderService } from '../shared/services/loader.service';
 })
 export class LoaderComponent implements OnInit {
 
-  show: boolean = true;
+  show: boolean = false;
 
   private subscription: Subscription;
 

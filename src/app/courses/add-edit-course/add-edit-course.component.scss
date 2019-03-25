@@ -30,10 +30,6 @@ button {
     align-items: baseline;
     justify-content: space-between;
 }
-.label-info {
-    color: #6c7283;
-    font-size: 12px;
-}
 .form-group {
     padding-bottom: 12px;
 }
@@ -72,3 +68,9 @@ button {
 input.ng-invalid.ng-touched {
     border: 1px solid red;
 }
+
+button:disabled {
+    cursor: not-allowed;
+    background-color: #d9dbe3;
+    color: #5b616f;
+  }

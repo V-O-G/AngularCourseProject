@@ -29,7 +29,11 @@ export class CoursesService {
     }
 
     getCoursesSearchResult(textFragment: string, count: string) {
-        return this.http.get<CourseListItem[]>(`${BASE_URL}`, {params: {textFragment, count}});
+        this.showLoader();
+        return this.http.get<CourseListItem[]>(`${BASE_URL}`, {params: {textFragment, count}})
+        .pipe( finalize(() => {
+            this.hideLoader();
+        }));
     }
 
     addCourse(course: string) {
@@ -39,7 +43,11 @@ export class CoursesService {
     }
 
     getCourseById(id: number) {
-        return this.http.get<ICourse>(`${BASE_URL}/${id}`);   
+        this.showLoader();
+        return this.http.get<ICourse>(`${BASE_URL}/${id}`)
+        .pipe( finalize(() => {
+            this.hideLoader();
+        })); 
     }
     
     removeCourse(courseToRemoveId: string) {

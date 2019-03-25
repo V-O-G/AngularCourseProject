@@ -8,26 +8,31 @@
                 <div class="form-group">
                     <div class="label-group">
                         <label>Title</label>
-                        <div class="label-info">*required</div>
+                        <app-label-info
+                            [fieldValid]="checkIfValid('courseName')"
+                        ></app-label-info>
                     </div>
                     <div class="input-container">
                         <input
                             formControlName="courseName"
+                            [maxLength]="50"
                             id="courseName"
                             class="shared-input full-size"
                             placeholder="Text input"
                         >
                     </div>                   
-                    
                 </div>
                 <div class="form-group">
                     <div class="label-group">
                         <label>Description</label>
-                        <div class="label-info">*required</div>
+                        <app-label-info
+                            [fieldValid]="checkIfValid('courseDescription')"
+                        ></app-label-info>
                     </div> 
                     <textarea 
                         formControlName="courseDescription"
                         id="courseDescription"
+                        [maxLength]="500"
                         class="full-size"
                         placeholder="Add description"
                     ></textarea>
@@ -35,16 +40,19 @@
                 <div class="form-group">
                     <div class="label-group small-width">
                         <label>Duration</label>
-                        <div class="label-info">*required</div>
+                        <app-label-info
+                            [fieldValid]="checkIfValid('courseLength')"
+                        ></app-label-info>
                     </div>
                     <div class="duration input-container">
                         <input
                             formControlName="courseLength"
+                            numberValidator
                             class="shared-input small-width"
                             placeholder="minutes"
                             #durationInput
                         >
-                        <div class="duration-input-output">
+                        <div *ngIf="checkIfValid('courseLength')" class="duration-input-output">
                             {{ durationInput.value | duration }}
                         </div>
                     </div>    
@@ -52,7 +60,9 @@
                 <div class="form-group small-width">
                     <div class="label-group">
                         <label>Date</label>
-                        <div class="label-info">*required</div>
+                        <app-label-info
+                            [fieldValid]="checkIfValid('courseDate')"
+                        ></app-label-info>
                     </div>
                     <div class="input-container">
                         <input
@@ -66,7 +76,9 @@
                 <div class="form-group medium-width">
                     <div class="label-group">
                         <label>Authors</label>
-                        <div class="label-info">*required</div>
+                        <app-label-info
+                            [fieldValid]="checkIfValid('courseAuthors')"
+                        ></app-label-info>
                     </div> 
                     <div class="input-container">
                         <input
@@ -86,6 +98,7 @@
                     <button
                         type="submit"
                         class="save-button"
+                        [disabled]="!signupForm.valid"
                     >
                         Save
                     </button>
