@@ -54,11 +54,11 @@ export class AddEditCourseComponent implements OnInit {
   }
 
   onSubmit() {
-    const newCourse = this.coursesFormToJson();
+    const newCourse = this.coursesFormToServer();
       this.coursesService.addCourse(newCourse)
       .subscribe(
         (newCourse) => {
-           console.log(newCourse);
+          console.log(newCourse);
         },
         (error) => console.log(error)
       );    
@@ -80,12 +80,14 @@ export class AddEditCourseComponent implements OnInit {
     }
   }
 
-  coursesFormToJson() {
+  coursesFormToServer() {
     const courseId = this.courseToEdit ? this.courseToEdit.id : null;
+    const isTopRaited = this.courseToEdit ? this.courseToEdit.isTopRated : false;
     return {
       id: courseId,
       name: this.signupForm.get('courseName').value,
       description: this.signupForm.get('courseDescription').value,
+      isTopRated: isTopRaited,
       date: this.toDate(this.signupForm.get('courseDate').value),
       authors: this.transformAuthorsArr(this.signupForm.get('courseAuthors').value),
       length: this.signupForm.get('courseLength').value,
