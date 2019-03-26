@@ -6,6 +6,7 @@ import { FormGroup, FormControl, Validators, FormArray, FormControlName } from '
 import { DatePipe } from '@angular/common';
 import numberValidator from '../shared/validation-functions/number-validator';
 import dateValidator from '../shared/validation-functions/date-validator';
+import { IAuthorFethed } from '../shared/models/authors.model';
 
 @Component({
   selector: 'add-edit-course',
@@ -17,6 +18,7 @@ export class AddEditCourseComponent implements OnInit {
   course: ICourse;
   signupForm: FormGroup;
   loading = true;
+  authors: IAuthorFethed[];
 
   private courseId: number;
   private dateNow = new Date();
@@ -32,6 +34,7 @@ export class AddEditCourseComponent implements OnInit {
   ngOnInit() {
     this.courseId = +this.route.snapshot.params['id'];
     this.getCourseInfo();
+    this.subscribeToAuthors();
   }
 
   onCancel() {
@@ -106,5 +109,15 @@ export class AddEditCourseComponent implements OnInit {
       'courseDate': new FormControl(courseDate, [Validators.required, dateValidator]),
       'courseAuthors': new FormControl(authors, [Validators.required]),
     });  
+  }
+
+  subscribeToAuthors(query?: string) {
+    this.coursesService.getAuthors(query || null)
+    .subscribe(
+      (authors) => {
+        this.authors = authors; 
+      },
+      (error) => console.log(error)
+    );
   }
 }

@@ -8,6 +8,7 @@ import { finalize } from 'rxjs/operators';
 import { LoaderService } from "src/app/core/shared/services/loader.service";
 
 const BASE_URL = 'http://localhost:3004/courses';
+const AUTHORS_URL = 'http://localhost:3004/authors';
 
 
 @Injectable()
@@ -36,7 +37,7 @@ export class CoursesService {
         }));
     }
 
-    addCourse(course: string) {
+    addCourse(course) {
         if(course) {
             return this.http.post(`${BASE_URL}`, {course});
         }
@@ -52,6 +53,15 @@ export class CoursesService {
     
     removeCourse(courseToRemoveId: string) {
         return this.http.delete<CourseListItem[]>(`${BASE_URL}/${courseToRemoveId}`);   
+    }
+
+    getAuthors(textFragment?: string) {
+        if(textFragment) {
+            console.log('query works');
+            return this.http.get<any>(`${AUTHORS_URL}`, {params: {textFragment}})
+        } else {
+            return this.http.get<any>(`${AUTHORS_URL}`);
+        }
     }
 
     private showLoader(): void {

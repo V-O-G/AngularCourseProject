@@ -1,22 +1,30 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { AuthorizationService } from '../core/shared/services/authorization.service';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'login-page',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
   isUserLoggedIn: boolean;
+  loginForm: FormGroup;
 
   constructor(
     private authorizationService: AuthorizationService,
     private router: Router,
   ) {}
 
-  onLoginClick(email: string, password: string) {
+  ngOnInit() {
+    this.createForm();
+  }
+
+  onLoginClick() {
+    const email: string = this.loginForm.get('email').value;
+    const password: string = this.loginForm.get('password').value;
     this.authorizationService.login(email, password)
       .subscribe(
         (tokenData: {token: string}) => {
@@ -27,5 +35,12 @@ export class LoginComponent {
         },
         (error) => console.log(error)
       );
-  }  
+  } 
+
+  private createForm() {
+    this.loginForm = new FormGroup({
+      'email': new FormControl(null),
+      'password': new FormControl(null),
+    });  
+  }
 } 

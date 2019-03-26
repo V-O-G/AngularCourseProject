@@ -25,6 +25,8 @@
     "@ngrx/core": "^1.2.0",
     "@ngrx/store": "^7.3.0",
     "@ngrx/store-devtools": "^7.3.0",
+    "angular-tag-cloud-module": "^3.3.0",
+    "bootstrap": "^4.3.1",
     "core-js": "^2.5.4",
     "normalize.css": "^8.0.1",
     "rxjs": "^6.0.0",

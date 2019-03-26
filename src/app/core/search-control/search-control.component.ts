@@ -1,8 +1,5 @@
-import { Component, Output, EventEmitter, OnChanges, OnInit, Input } from '@angular/core';
-import { fromEvent, Observable } from 'rxjs';
-import { map, filter, debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
-import { Subject } from 'rxjs';
-import { CoursesService } from 'src/app/courses/shared/services/courses.service';
+import { Component, Output, EventEmitter, OnInit, Input } from '@angular/core';
+import { filter, debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { FormGroup, FormControl } from '@angular/forms';
 
 
@@ -18,7 +15,7 @@ export class SearchControlComponent implements OnInit {
   @Output() showAllCourses = new EventEmitter<boolean>();
   searchForm: FormGroup;
 
-  constructor(private coursesService: CoursesService) {}
+  constructor() {}
 
   ngOnInit() {
     this.createForm();
@@ -40,6 +37,4 @@ export class SearchControlComponent implements OnInit {
       'searchInput': new FormControl(null),
     });  
   }
-
-  // getCoursesSearchResult(textFragment: string, count: string)
 }
