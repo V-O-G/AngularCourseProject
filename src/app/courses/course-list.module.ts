@@ -16,6 +16,7 @@ import { EntryPageComponent } from './entry-page/entry-page.component';
 import { LabelInfoComponent } from './add-edit-course/label-info/label-info.component';
 import { NumberValidator } from './shared/directives/number-validator.directive';
 import { DateValidator } from './shared/directives/date-validator.directive';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 
 @NgModule({
   imports: [
@@ -24,6 +25,7 @@ import { DateValidator } from './shared/directives/date-validator.directive';
     CoreModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    NgMultiSelectDropDownModule.forRoot(),
   ],
   declarations: [
     CourseListComponent, 

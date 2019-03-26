@@ -19,6 +19,25 @@ export class AddEditCourseComponent implements OnInit {
   signupForm: FormGroup;
   loading = true;
   authors: IAuthorFethed[];
+  selectedAuthors: IAuthorFethed[] = [];
+
+  dropdownSettings = {};
+  
+  ngOnInit() {
+    this.courseId = +this.route.snapshot.params['id'];
+    this.getCourseInfo();
+    this.subscribeToAuthors();
+    
+    this.dropdownSettings = {
+      singleSelection: false,
+      idField: 'id',
+      textField: 'name',
+      selectAllText: 'Select All',
+      unSelectAllText: 'UnSelect All',
+      itemsShowLimit: 2,
+      allowSearchFilter: true
+    };
+  }
 
   private courseId: number;
   private dateNow = new Date();
@@ -30,20 +49,14 @@ export class AddEditCourseComponent implements OnInit {
     private coursesService: CoursesService, 
   ) { }
 
-
-  ngOnInit() {
-    this.courseId = +this.route.snapshot.params['id'];
-    this.getCourseInfo();
-    this.subscribeToAuthors();
-  }
-
   onCancel() {
     this.router.navigate(['../'], {relativeTo: this.route});
   }
 
   onSubmit() {
     const newCourse = this.coursesFormToJson();
-      this.coursesService.addCourse(newCourse)
+    const courseId = this.courseToEdit ? this.courseToEdit.id : null;
+      this.coursesService.addCourse(newCourse, courseId)
       .subscribe(
         (newCourse) => {
            console.log(newCourse);
@@ -70,18 +83,23 @@ export class AddEditCourseComponent implements OnInit {
 
   coursesFormToJson() {
     const newCourse = {
-      name: this.signupForm.get('courseName').value,
-      description: this.signupForm.get('courseDescription').value,
-      date: this.signupForm.get('courseDate').value,
+      name: this.signupForm.get('courseName').value.toString(),
+      description: this.signupForm.get('courseDescription').value.toString(),
+      date: this.dateToString(this.signupForm.get('courseDate').value),
       authors: this.signupForm.get('courseAuthors').value,
-      length: this.signupForm.get('courseLength').value,
+      length: this.signupForm.get('courseLength').value.toString(),
     };
-    return JSON.stringify(newCourse);    
+    return newCourse;    
   }
 
   checkIfValid(controlName) {
     const control = this.signupForm.get(controlName);
     return control.valid ? true: control.touched ? false : true;
+  }
+
+  private dateToString(date: string) {
+    const dateArray = date.split('/');
+    return new Date(+dateArray[2], +dateArray[1]-1, +dateArray[0]).toDateString();
   }
 
   private createForm() {
@@ -91,10 +109,12 @@ export class AddEditCourseComponent implements OnInit {
       this.courseToEdit 
       ? this.courseToEdit.date 
       : this.dateNow, 'dd/MM/yyyy');
-    const authors = this.courseToEdit 
+    this.selectedAuthors = this.courseToEdit 
       ? this.courseToEdit.authors.map((author) => {
-        return `${author.firstName} ${author.lastName}`
-      }).join() 
+        return {
+          id: author.id.toString(),
+          name: `${author.firstName} ${author.lastName}`
+        }})
       : null;
     this.signupForm = new FormGroup({
       'courseName': new FormControl(
@@ -107,8 +127,8 @@ export class AddEditCourseComponent implements OnInit {
         [Validators.required, numberValidator]
       ),
       'courseDate': new FormControl(courseDate, [Validators.required, dateValidator]),
-      'courseAuthors': new FormControl(authors, [Validators.required]),
-    });  
+      'courseAuthors': new FormControl(this.selectedAuthors, [Validators.required]),
+    }); 
   }
 
   subscribeToAuthors(query?: string) {

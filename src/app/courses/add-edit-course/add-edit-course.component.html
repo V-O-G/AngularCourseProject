@@ -79,11 +79,14 @@
                         ></app-label-info>
                     </div> 
                     <div class="input-container">
-                        <input
+                        <ng-multiselect-dropdown
+                            [placeholder]="'select author'"
+                            [data]="authors"
+                            [(ngModel)]="selectedAuthors"
                             formControlName="courseAuthors"
-                            class="shared-input medium-width"
-                            placeholder="Start typing"
+                            [settings]="dropdownSettings"
                         >
+                        </ng-multiselect-dropdown>
                     </div>
                 </div>
                 <div class="add-course_controls">

@@ -28,6 +28,7 @@
     "angular-tag-cloud-module": "^3.3.0",
     "bootstrap": "^4.3.1",
     "core-js": "^2.5.4",
+    "ng-multiselect-dropdown": "^0.2.3",
     "normalize.css": "^8.0.1",
     "rxjs": "^6.0.0",
     "zone.js": "~0.8.26"
