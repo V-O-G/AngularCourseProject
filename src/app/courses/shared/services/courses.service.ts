@@ -37,13 +37,9 @@ export class CoursesService {
         }));
     }
 
-    addCourse(course, id: number) {
+    addCourse(course) {
         if(course) {
-            if(id) {
-                return this.http.post(`${BASE_URL}/${id}`, {course})
-            } else {
-                return this.http.post(`${BASE_URL}`, {course});
-            }
+            return this.http.post(`${BASE_URL}`, {course});
         }
     }
 

@@ -55,8 +55,7 @@ export class AddEditCourseComponent implements OnInit {
 
   onSubmit() {
     const newCourse = this.coursesFormToJson();
-    const courseId = this.courseToEdit ? this.courseToEdit.id : null;
-      this.coursesService.addCourse(newCourse, courseId)
+      this.coursesService.addCourse(newCourse)
       .subscribe(
         (newCourse) => {
            console.log(newCourse);
@@ -82,14 +81,16 @@ export class AddEditCourseComponent implements OnInit {
   }
 
   coursesFormToJson() {
+    const courseId = this.courseToEdit ? this.courseToEdit.id : null;
     const newCourse = {
-      name: this.signupForm.get('courseName').value.toString(),
-      description: this.signupForm.get('courseDescription').value.toString(),
+      id: courseId,
+      name: this.signupForm.get('courseName').value,
+      description: this.signupForm.get('courseDescription').value,
       date: this.dateToString(this.signupForm.get('courseDate').value),
       authors: this.signupForm.get('courseAuthors').value,
-      length: this.signupForm.get('courseLength').value.toString(),
+      length: this.signupForm.get('courseLength').value,
     };
-    return newCourse;    
+    return JSON.stringify(newCourse);    
   }
 
   checkIfValid(controlName) {
