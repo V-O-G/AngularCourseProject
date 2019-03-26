@@ -39,7 +39,11 @@ export class CoursesService {
 
     addCourse(course) {
         if(course) {
-            return this.http.post(`${BASE_URL}`, course);
+            if(course.id){
+                return this.http.put(`${BASE_URL}/${course.id}`, course)
+            } else {
+                return this.http.post(`${BASE_URL}`, course);
+            }
         }
     }
 
