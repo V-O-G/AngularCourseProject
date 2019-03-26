@@ -82,15 +82,14 @@ export class AddEditCourseComponent implements OnInit {
 
   coursesFormToJson() {
     const courseId = this.courseToEdit ? this.courseToEdit.id : null;
-    const newCourse = {
+    return {
       id: courseId,
       name: this.signupForm.get('courseName').value,
       description: this.signupForm.get('courseDescription').value,
-      date: this.dateToString(this.signupForm.get('courseDate').value),
-      authors: this.signupForm.get('courseAuthors').value,
+      date: this.toDate(this.signupForm.get('courseDate').value),
+      authors: this.transformAuthorsArr(this.signupForm.get('courseAuthors').value),
       length: this.signupForm.get('courseLength').value,
-    };
-    return JSON.stringify(newCourse);    
+    };    
   }
 
   checkIfValid(controlName) {
@@ -98,9 +97,9 @@ export class AddEditCourseComponent implements OnInit {
     return control.valid ? true: control.touched ? false : true;
   }
 
-  private dateToString(date: string) {
+  private toDate(date: string) {
     const dateArray = date.split('/');
-    return new Date(+dateArray[2], +dateArray[1]-1, +dateArray[0]).toDateString();
+    return new Date(+dateArray[2], +dateArray[1]-1, +dateArray[0]);
   }
 
   private createForm() {
@@ -130,6 +129,17 @@ export class AddEditCourseComponent implements OnInit {
       'courseDate': new FormControl(courseDate, [Validators.required, dateValidator]),
       'courseAuthors': new FormControl(this.selectedAuthors, [Validators.required]),
     }); 
+  }
+
+  private transformAuthorsArr(authors) {
+    return authors.map(author => { 
+      const nameParts = author.name.split(' ');
+      return {
+        id: author.id,
+        firstName: nameParts[0],
+        lastName: nameParts[1],
+      }
+    })
   }
 
   subscribeToAuthors(query?: string) {
