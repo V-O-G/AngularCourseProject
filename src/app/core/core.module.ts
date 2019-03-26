@@ -9,6 +9,7 @@ import { SearchControlComponent } from './search-control/search-control.componen
 import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
 import { LoaderComponent } from './loader/loader.component';
 import { MatProgressSpinnerModule } from '@angular/material';
+import { LabelInfoComponent } from './label-info/label-info.component';
 
 @NgModule({
   imports: [
@@ -24,6 +25,7 @@ import { MatProgressSpinnerModule } from '@angular/material';
     BreadcrumbsComponent,
     SearchControlComponent,
     LoaderComponent,  
+    LabelInfoComponent,
   ],
   exports: [
     HeaderComponent,
@@ -31,6 +33,7 @@ import { MatProgressSpinnerModule } from '@angular/material';
     BreadcrumbsComponent,
     SearchControlComponent,
     LoaderComponent,
+    LabelInfoComponent,
   ]
 })
 export class CoreModule { }

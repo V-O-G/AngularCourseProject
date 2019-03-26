@@ -69,3 +69,13 @@ textarea {
 ::placeholder {
     color: #c0c3ce;
 }
+
+button:disabled {
+    cursor: not-allowed;
+    background-color: #d9dbe3;
+    color: #5b616f;
+}
+
+input.ng-invalid.ng-touched {
+    border: 1px solid red;
+}

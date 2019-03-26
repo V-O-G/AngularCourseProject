@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { AuthorizationService } from '../core/shared/services/authorization.service';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'login-page',
@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
     this.createForm();
   }
 
-  onLoginClick() {
+  onSubmit() {
     const email: string = this.loginForm.get('email').value;
     const password: string = this.loginForm.get('password').value;
     this.authorizationService.login(email, password)
@@ -37,10 +37,15 @@ export class LoginComponent implements OnInit {
       );
   } 
 
+  checkIfValid(controlName) {
+    const control = this.loginForm.get(controlName);
+    return control.valid ? true: control.touched ? false : true;
+  }
+
   private createForm() {
     this.loginForm = new FormGroup({
-      'email': new FormControl(null),
-      'password': new FormControl(null),
+      'email': new FormControl(null, Validators.required),
+      'password': new FormControl(null, Validators.required),
     });  
   }
 } 

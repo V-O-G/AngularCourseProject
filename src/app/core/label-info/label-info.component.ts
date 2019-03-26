@@ -7,5 +7,4 @@ import { Component, Input } from '@angular/core';
 })
 export class LabelInfoComponent {
   @Input() fieldValid: boolean;
-
 }

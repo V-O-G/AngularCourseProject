@@ -13,10 +13,10 @@ import { AddEditCourseComponent } from './add-edit-course/add-edit-course.compon
 import { DurationPipe } from './shared/pipes/duration.pipe';
 import { CourseHighlightDirective } from './shared/directives/course-highlight.directive';
 import { EntryPageComponent } from './entry-page/entry-page.component';
-import { LabelInfoComponent } from './add-edit-course/label-info/label-info.component';
 import { NumberValidator } from './shared/directives/number-validator.directive';
 import { DateValidator } from './shared/directives/date-validator.directive';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import { LabelInfoComponent } from '../core/label-info/label-info.component';
 
 @NgModule({
   imports: [
@@ -36,7 +36,6 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
     FilterByUserInputPipe,
     AddEditCourseComponent,
     EntryPageComponent,
-    LabelInfoComponent,
     NumberValidator,
     DateValidator,
   ],
