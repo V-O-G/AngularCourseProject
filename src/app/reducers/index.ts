@@ -7,13 +7,12 @@ import {
 } from '@ngrx/store';
 import { environment } from '../../environments/environment';
 
-export interface State {
+import * as fromAuth from '../auth/store/auth.reducers';
 
+export interface State {
+  auth: fromAuth.State
 }
 
 export const reducers: ActionReducerMap<State> = {
-
+  auth: fromAuth.authReducer
 };
-
-
-export const metaReducers: MetaReducer<State>[] = !environment.production ? [] : [];

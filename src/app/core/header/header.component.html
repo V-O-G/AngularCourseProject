@@ -3,13 +3,13 @@
       <img src="../../../assets/images/logo.png" alt="logo">
   </div>
   <div
-    *ngIf="isUserLoggedIn"
+    *ngIf="(authState | async).authenticated"
     class="status-controls"
   >
     <div class="login">
       <img class="status-img" src="../../../assets/images/user.png" alt="login icon">
       <span>
-          {{ userInfo?.login }}
+          {{ (authState | async).userInfo?.login }}
       </span>
     </div>    
     <button 

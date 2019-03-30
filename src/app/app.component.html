@@ -1,7 +1,7 @@
 <div class="wrapper">
   <app-loader></app-loader>
   <app-header></app-header>
-  <app-breadcrumbs *ngIf="breadcrumbsActive"></app-breadcrumbs>
+  <app-breadcrumbs *ngIf="(authState | async).authenticated"></app-breadcrumbs>
   <router-outlet></router-outlet>
 </div> 
 <app-footer class="footer"></app-footer> 
