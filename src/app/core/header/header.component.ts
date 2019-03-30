@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-
-import { AuthorizationService } from '../shared/services/authorization.service';
+import { AuthorizationService } from 'src/app/auth/authorization.service';
 
 
 @Component({

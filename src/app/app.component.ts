@@ -1,6 +1,6 @@
 import { Component, OnInit, OnChanges } from '@angular/core';
-import { AuthorizationService } from './core/shared/services/authorization.service';
 import { ICourse } from './courses/shared/models/course-list-item.model';
+import { AuthorizationService } from './auth/authorization.service';
 
 
 @Component({

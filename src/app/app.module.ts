@@ -6,11 +6,8 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { CourseListModule } from './courses/course-list.module';
-import { LoginModule } from './login/login.module';
-import { AuthorizationService } from './core/shared/services/authorization.service';
 import { AppRoutingModule } from './app-routing.module';
 import { PageNotFoundComponent } from './core/page-not-found/page-not-found.component';
-import { AuthGuard } from './core/shared/services/auth-guard.service';
 import { CoursesService } from './courses/shared/services/courses.service';
 import { MatProgressSpinnerModule } from '@angular/material';
 import { OverlayModule } from '@angular/cdk/overlay';
@@ -18,6 +15,9 @@ import { AuthInterceptor } from './core/auth-interceptor';
 import { LoaderService } from './core/shared/services/loader.service';
 import { StoreModule } from '@ngrx/store';
 import { reducers, metaReducers } from './reducers';
+import { AuthModule } from './auth/auth.module';
+import { AuthorizationService } from './auth/authorization.service';
+import { AuthGuard } from './auth/auth-guard.service';
 
 
 @NgModule({
@@ -29,8 +29,8 @@ import { reducers, metaReducers } from './reducers';
     BrowserModule,
     FormsModule,
     CoreModule,
+    AuthModule,
     CourseListModule,
-    LoginModule,
     AppRoutingModule,
     HttpClientModule,
     MatProgressSpinnerModule,

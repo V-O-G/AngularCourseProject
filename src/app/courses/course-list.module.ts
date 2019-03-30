@@ -16,7 +16,6 @@ import { EntryPageComponent } from './entry-page/entry-page.component';
 import { NumberValidator } from './shared/directives/number-validator.directive';
 import { DateValidator } from './shared/directives/date-validator.directive';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
-import { LabelInfoComponent } from '../core/label-info/label-info.component';
 
 @NgModule({
   imports: [
