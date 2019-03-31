@@ -7,6 +7,11 @@ import { DatePipe } from '@angular/common';
 import numberValidator from '../shared/validation-functions/number-validator';
 import dateValidator from '../shared/validation-functions/date-validator';
 import { IAuthorFethed } from '../shared/models/authors.model';
+import { Store } from '@ngrx/store';
+
+import * as fromApp from '../../reducers';
+import * as CoursesActions from '../store/courses.actions';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'add-edit-course',
@@ -18,7 +23,7 @@ export class AddEditCourseComponent implements OnInit {
   course: ICourse;
   signupForm: FormGroup;
   loading = true;
-  authors: IAuthorFethed[];
+  coursesState: Observable<any>;
   selectedAuthors: IAuthorFethed[] = [];
 
   dropdownSettings = {};
@@ -26,7 +31,8 @@ export class AddEditCourseComponent implements OnInit {
   ngOnInit() {
     this.courseId = +this.route.snapshot.params['id'];
     this.getCourseInfo();
-    this.subscribeToAuthors();
+    this.getAuthors();
+    this.coursesState = this.store.select('courses');
     
     this.dropdownSettings = {
       singleSelection: false,
@@ -46,7 +52,8 @@ export class AddEditCourseComponent implements OnInit {
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private coursesService: CoursesService, 
+    private coursesService: CoursesService,
+    private store: Store<fromApp.State>,
   ) { }
 
   onCancel() {
@@ -144,13 +151,7 @@ export class AddEditCourseComponent implements OnInit {
     })
   }
 
-  subscribeToAuthors(query?: string) {
-    this.coursesService.getAuthors(query || null)
-    .subscribe(
-      (authors) => {
-        this.authors = authors; 
-      },
-      (error) => console.log(error)
-    );
+  getAuthors(query?: string) {
+    this.store.dispatch(new CoursesActions.GetAuthors(query || null));
   }
 }

@@ -81,7 +81,7 @@
                     <div class="input-container">
                         <ng-multiselect-dropdown
                             [placeholder]="'select author'"
-                            [data]="authors"
+                            [data]="(coursesState | async).authors"
                             [(ngModel)]="selectedAuthors"
                             formControlName="courseAuthors"
                             [settings]="dropdownSettings"

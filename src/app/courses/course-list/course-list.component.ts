@@ -2,14 +2,13 @@ import { Component, OnInit, OnChanges } from '@angular/core';
 
 import { ICourse } from '../shared/models/course-list-item.model';
 import { FilterByUserInputPipe } from '../shared/pipes/filter-by-user-intup.pipe';
-import { CoursesService } from '../shared/services/courses.service';
 import { OrderByDatePipe } from '../shared/pipes/order-by-date.pipe';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
 
 import * as fromApp from '../../reducers';
 import * as CoursesActions from '../store/courses.actions';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-course-list',
@@ -24,7 +23,6 @@ export class CourseListComponent implements OnInit {
 
   constructor( 
     private orderByDatePipe: OrderByDatePipe,
-    private coursesService: CoursesService,
     private router: Router,
     private route: ActivatedRoute,
     private store: Store<fromApp.State>,

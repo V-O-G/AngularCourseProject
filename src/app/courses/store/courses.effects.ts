@@ -5,6 +5,8 @@ import { from } from 'rxjs';
 
 import * as CoursesActions from './courses.actions';
 import { CoursesService } from '../shared/services/courses.service';
+import { IAuthor } from '../shared/models/author.model';
+import { IAuthorFethed } from '../shared/models/authors.model';
 
 @Injectable()
 export class CoursesEffects {
@@ -52,6 +54,23 @@ export class CoursesEffects {
       return [{
         type: CoursesActions.SET_COURSES,
         payload: courses
+      }];
+    })
+  );
+
+  @Effect()
+  getAuthors = this.actions$.pipe(
+    ofType(CoursesActions.GET_AUTHORS),
+    map((action: CoursesActions.GetAuthors) => {
+      return action.payload;
+    }),
+    switchMap((searchFragment: string) => {
+      return from(this.coursesService.getAuthors(searchFragment));
+    }),
+    mergeMap((authors: IAuthorFethed[]) => {
+      return [{
+        type: CoursesActions.SET_AUTHORS,
+        payload: authors
       }];
     })
   );

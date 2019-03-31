@@ -1,10 +1,14 @@
 import { Action } from '@ngrx/store';
+import { IAuthor } from '../shared/models/author.model';
+import { IAuthorFethed } from '../shared/models/authors.model';
 
 export const GET_COURSES = 'GET_COURSES';
 export const SET_COURSES = 'SET_COURSES';
 export const LOAD_MORE = 'LOAD_MORE';
 export const DELETE_COURSE = 'DELETE_COURSE';
 export const GET_USER_SEARCH = 'GET_USER_SEARCH';
+export const GET_AUTHORS = 'GET_AUTHORS';
+export const SET_AUTHORS = 'SET_AUTHORS';
 
 
 export class GetCourses implements Action {
@@ -33,9 +37,23 @@ export class GetUserSearch implements Action {
   constructor(public payload: string) {}
 }
 
+export class GetAuthors implements Action {
+  readonly type = GET_AUTHORS;
+
+  constructor(public payload: string) {}
+}
+
+export class SetAuthors implements Action {
+  readonly type = SET_AUTHORS;
+
+  constructor(public payload: IAuthorFethed[]) {}
+}
+
 export type CoursesActions =
   GetCourses |
   SetCourses |
   LoadMore |
   DeleteCourse |
-  GetUserSearch;
+  GetUserSearch |
+  GetAuthors |
+  SetAuthors;
