@@ -5,6 +5,11 @@ import { FilterByUserInputPipe } from '../shared/pipes/filter-by-user-intup.pipe
 import { CoursesService } from '../shared/services/courses.service';
 import { OrderByDatePipe } from '../shared/pipes/order-by-date.pipe';
 import { Router, ActivatedRoute } from '@angular/router';
+import { Store } from '@ngrx/store';
+
+import * as fromApp from '../../reducers';
+import * as CoursesActions from '../store/courses.actions';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-course-list',
@@ -13,31 +18,33 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class CourseListComponent implements OnInit {
   coursesList: ICourse[];
-  count: string = '10';
+  count: string;
   subscription;
+  coursesState: Observable<any>;
 
   constructor( 
     private orderByDatePipe: OrderByDatePipe,
     private coursesService: CoursesService,
     private router: Router,
     private route: ActivatedRoute,
+    private store: Store<fromApp.State>,
   ) { 
   }
 
   ngOnInit() {
     this.callCourses();
+    this.coursesState = this.store.select('courses');
   }
 
   callCourses() {
-    this.subscription = this.coursesService.getCourses(this.count)
-    .subscribe(
-      (courses: ICourse[]) => {
-        this.coursesList = this.orderByDatePipe.transform(courses); 
-      },
-      (error) => console.log(error)
-    );
+    this.store.dispatch(new CoursesActions.GetCourses());
   };
-  
+
+  onLoadMore() {
+    this.store.dispatch(new CoursesActions.LoadMore());
+    this.callCourses();
+  }
+
   onCourseDeleted(courseId: number) {
     const courseToBeDeleted = confirm("Do you really want to delete this course?");
     if (courseToBeDeleted) {
@@ -50,11 +57,6 @@ export class CourseListComponent implements OnInit {
           (error) => console.log(error)
         );
     }
-  }
-
-  onLoadMore() {
-    this.count = (+this.count + 5).toString();
-    this.callCourses();
   }
 
   getUserSearchInput(userSearchInput: string) {

@@ -13,7 +13,7 @@
     </button>
   </div>
     <div 
-    *ngFor="let course of coursesList" 
+    *ngFor="let course of (coursesState | async).courses" 
     class="course-list"
     >
     <app-course-list-item      
@@ -22,12 +22,12 @@
     ></app-course-list-item>
     </div>
     <div
-      *ngIf="coursesList"
+      *ngIf="(coursesState | async).courses"
       class="load-more-container"
     >
       <button 
         (click)="onLoadMore()" 
-        *ngIf="coursesList.length; else noCoursesAdded"
+        *ngIf="(coursesState | async).courses.length; else noCoursesAdded"
         class="link-style-button"
       >
         Load more

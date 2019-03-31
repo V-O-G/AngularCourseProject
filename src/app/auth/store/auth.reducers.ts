@@ -14,11 +14,6 @@ const initialState: State = {
 
 export function authReducer(state = initialState, action: AuthActions.AuthActions) {
   switch (action.type) {
-    case (AuthActions.IF_SIGNED_IN):
-      return {
-        ...state,
-        userInfo: action.payload
-      };
     case (AuthActions.SIGNIN):
       return {
         ...state,

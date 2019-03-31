@@ -20,6 +20,7 @@ import { AuthorizationService } from './auth/authorization.service';
 import { AuthGuard } from './auth/auth-guard.service';
 import { EffectsModule } from '@ngrx/effects';
 import { AuthEffects } from './auth/store/auth.effects';
+import { CoursesEffects } from './courses/store/courses.effects';
 
 
 @NgModule({
@@ -38,7 +39,7 @@ import { AuthEffects } from './auth/store/auth.effects';
     MatProgressSpinnerModule,
     OverlayModule,
     StoreModule.forRoot(reducers),
-    EffectsModule.forRoot([AuthEffects])
+    EffectsModule.forRoot([AuthEffects, CoursesEffects])
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },

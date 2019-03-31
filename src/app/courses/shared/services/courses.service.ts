@@ -5,7 +5,10 @@ import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
 import { finalize } from 'rxjs/operators';
+import { Store } from "@ngrx/store";
+
 import { LoaderService } from "src/app/core/shared/services/loader.service";
+import * as fromApp from '../../../reducers';
 
 const BASE_URL = 'http://localhost:3004/courses';
 const AUTHORS_URL = 'http://localhost:3004/authors';
@@ -14,15 +17,23 @@ const AUTHORS_URL = 'http://localhost:3004/authors';
 @Injectable()
 export class CoursesService {
     courses: ICourse[] = [];
+    count: string;
+    coursesState: Observable<any>;
 
     constructor(
         private http: HttpClient,
-        private loaderService: LoaderService
+        private loaderService: LoaderService,
+        private store: Store<fromApp.State>,
     ) {
+        this.coursesState = this.store.select('courses');
+        this.coursesState.subscribe(data => {
+            this.count = data.count;
+          });
     }
 
-    getCourses(count: string) {
+    getCourses() {
         this.showLoader();
+        const count = this.count;
         return this.http.get<CourseListItem[]>(`${BASE_URL}`, {params: {count}})
         .pipe( finalize(() => {
             this.hideLoader();
@@ -61,7 +72,6 @@ export class CoursesService {
 
     getAuthors(textFragment?: string) {
         if(textFragment) {
-            console.log('query works');
             return this.http.get<any>(`${AUTHORS_URL}`, {params: {textFragment}})
         } else {
             return this.http.get<any>(`${AUTHORS_URL}`);

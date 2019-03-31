@@ -13,7 +13,6 @@ export class AuthEffects {
   authSignin = this.actions$.pipe(
     ofType(AuthActions.TRY_SIGNIN),
     map((action: AuthActions.TrySignin) => {
-      // console.log(action.payload);
       return action.payload;
     }),
     switchMap((authData: {email: string, password: string}) => {
@@ -25,7 +24,6 @@ export class AuthEffects {
     }),
     mergeMap((userInfo: any) => {
       this.router.navigate(['/courses']);
-      // console.log(userInfo);
       return [
         {
           type: AuthActions.SIGNIN
