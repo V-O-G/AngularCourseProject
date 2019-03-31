@@ -39,6 +39,23 @@ export class CoursesEffects {
     })
   );
 
+  @Effect()
+  getUserSearchInput = this.actions$.pipe(
+    ofType(CoursesActions.GET_USER_SEARCH),
+    map((action: CoursesActions.GetUserSearch) => {
+      return action.payload;
+    }),
+    switchMap((searchFragment: string) => {
+      return from(this.coursesService.getCoursesSearchResult(searchFragment));
+    }),
+    mergeMap((courses: any) => {
+      return [{
+        type: CoursesActions.SET_COURSES,
+        payload: courses
+      }];
+    })
+  );
+
   constructor(
     private actions$: Actions, 
     private coursesService: CoursesService,

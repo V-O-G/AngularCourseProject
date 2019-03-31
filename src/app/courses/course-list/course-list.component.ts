@@ -53,13 +53,7 @@ export class CourseListComponent implements OnInit {
   }
 
   getUserSearchInput(userSearchInput: string) {
-    this.coursesService.getCoursesSearchResult(userSearchInput, this.count)
-      .subscribe(
-        (courses: ICourse[]) => {
-          this.coursesList = this.orderByDatePipe.transform(courses); 
-        },
-        (error) => console.log(error)
-      );
+    this.store.dispatch(new CoursesActions.GetUserSearch(userSearchInput));
   }
 
   showAllCourses(showCourses: boolean) {

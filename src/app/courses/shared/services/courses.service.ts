@@ -44,7 +44,8 @@ export class CoursesService {
         return this.http.delete<CourseListItem[]>(`${BASE_URL}/${courseToRemoveId}`);   
     }
 
-    getCoursesSearchResult(textFragment: string, count: string) {
+    getCoursesSearchResult(textFragment: string) {
+        const count = this.count;
         this.showLoader();
         return this.http.get<CourseListItem[]>(`${BASE_URL}`, {params: {textFragment, count}})
         .pipe( finalize(() => {
