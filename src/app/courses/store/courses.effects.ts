@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Actions, Effect, ofType } from '@ngrx/effects';
-import { switchMap, mergeMap, map } from 'rxjs/operators';
+import { switchMap, mergeMap, map, tap } from 'rxjs/operators';
 import { from } from 'rxjs';
 
 import * as CoursesActions from './courses.actions';
 import { CoursesService } from '../shared/services/courses.service';
 import { IAuthor } from '../shared/models/author.model';
 import { IAuthorFethed } from '../shared/models/authors.model';
+import { ICourse } from '../shared/models/course-list-item.model';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class CoursesEffects {
@@ -75,9 +77,33 @@ export class CoursesEffects {
     })
   );
 
+  @Effect()
+  addNewCours = this.actions$.pipe(
+    ofType(CoursesActions.ADD_NEW_COURSE),
+    map((action: CoursesActions.AddNewCourse) => {
+      return action.payload;
+    }),
+    switchMap((newCourse: ICourse) => {
+      return from(this.coursesService.addCourse(newCourse));
+    }),
+    mergeMap(() => {
+      return [{
+        type: CoursesActions.ON_NEW_COURSE_FORM_SUBMITTED,
+      }];
+    })
+  );
+
+  @Effect({dispatch: false})
+  navigateToCourses = this.actions$.pipe(
+    ofType(CoursesActions.ON_NEW_COURSE_FORM_SUBMITTED),
+    tap(() => {
+      this.router.navigate(['./courses']);
+    }));
+
   constructor(
     private actions$: Actions, 
     private coursesService: CoursesService,
+    private router: Router,
     ) {
   }
 }

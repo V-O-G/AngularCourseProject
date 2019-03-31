@@ -1,6 +1,7 @@
 import { Action } from '@ngrx/store';
 import { IAuthor } from '../shared/models/author.model';
 import { IAuthorFethed } from '../shared/models/authors.model';
+import { ICourse } from '../shared/models/course-list-item.model';
 
 export const GET_COURSES = 'GET_COURSES';
 export const SET_COURSES = 'SET_COURSES';
@@ -9,6 +10,8 @@ export const DELETE_COURSE = 'DELETE_COURSE';
 export const GET_USER_SEARCH = 'GET_USER_SEARCH';
 export const GET_AUTHORS = 'GET_AUTHORS';
 export const SET_AUTHORS = 'SET_AUTHORS';
+export const ADD_NEW_COURSE = 'ADD_NEW_COURSE';
+export const ON_NEW_COURSE_FORM_SUBMITTED = 'ON_NEW_COURSE_FORM_SUBMITTED';
 
 
 export class GetCourses implements Action {
@@ -49,6 +52,16 @@ export class SetAuthors implements Action {
   constructor(public payload: IAuthorFethed[]) {}
 }
 
+export class AddNewCourse implements Action {
+  readonly type = ADD_NEW_COURSE;
+
+  constructor(public payload: ICourse) {}
+}
+
+export class OnNewCourseFormSubmitted implements Action {
+  readonly type = ON_NEW_COURSE_FORM_SUBMITTED;
+}
+
 export type CoursesActions =
   GetCourses |
   SetCourses |
@@ -56,4 +69,6 @@ export type CoursesActions =
   DeleteCourse |
   GetUserSearch |
   GetAuthors |
-  SetAuthors;
+  SetAuthors |
+  AddNewCourse |
+  OnNewCourseFormSubmitted;

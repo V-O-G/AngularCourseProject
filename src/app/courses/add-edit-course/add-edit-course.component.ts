@@ -57,18 +57,12 @@ export class AddEditCourseComponent implements OnInit {
   ) { }
 
   onCancel() {
-    this.router.navigate(['../'], {relativeTo: this.route});
+    this.store.dispatch(new CoursesActions.OnNewCourseFormSubmitted());
   }
 
   onSubmit() {
     const newCourse = this.coursesFormToServer();
-      this.coursesService.addCourse(newCourse)
-      .subscribe(
-        (newCourse) => {
-          console.log(newCourse);
-        },
-        (error) => console.log(error)
-      );    
+    this.store.dispatch(new CoursesActions.AddNewCourse(newCourse));    
     this.onCancel();
   }
 
