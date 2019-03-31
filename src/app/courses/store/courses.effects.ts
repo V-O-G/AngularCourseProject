@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Actions, Effect, ofType } from '@ngrx/effects';
-import { switchMap, mergeMap } from 'rxjs/operators';
+import { switchMap, mergeMap, map } from 'rxjs/operators';
 import { from } from 'rxjs';
 
 import * as CoursesActions from './courses.actions';
@@ -18,6 +18,23 @@ export class CoursesEffects {
       return [{
         type: CoursesActions.SET_COURSES,
         payload: courses
+      }];
+    })
+  );
+
+  @Effect()
+  deleteCourse = this.actions$.pipe(
+    ofType(CoursesActions.DELETE_COURSE),
+    map((action: CoursesActions.DeleteCourse) => {
+      return action.payload;
+    }),
+    switchMap((courseId: number) => {
+      const courseIdToServer = courseId.toString();
+      return from(this.coursesService.removeCourse(courseIdToServer));
+    }),
+    mergeMap(() => {
+      return [{
+        type: CoursesActions.GET_COURSES,
       }];
     })
   );

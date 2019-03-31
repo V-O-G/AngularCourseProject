@@ -48,14 +48,7 @@ export class CourseListComponent implements OnInit {
   onCourseDeleted(courseId: number) {
     const courseToBeDeleted = confirm("Do you really want to delete this course?");
     if (courseToBeDeleted) {
-      const courseIdToServer = courseId.toString();
-      this.coursesService.removeCourse(courseIdToServer)
-        .subscribe(
-          () => {
-            this.callCourses();
-          },
-          (error) => console.log(error)
-        );
+      this.store.dispatch(new CoursesActions.DeleteCourse(courseId));
     }
   }
 

@@ -40,6 +40,10 @@ export class CoursesService {
         }));
     }
 
+    removeCourse(courseToRemoveId: string) {
+        return this.http.delete<CourseListItem[]>(`${BASE_URL}/${courseToRemoveId}`);   
+    }
+
     getCoursesSearchResult(textFragment: string, count: string) {
         this.showLoader();
         return this.http.get<CourseListItem[]>(`${BASE_URL}`, {params: {textFragment, count}})
@@ -64,10 +68,6 @@ export class CoursesService {
         .pipe( finalize(() => {
             this.hideLoader();
         })); 
-    }
-    
-    removeCourse(courseToRemoveId: string) {
-        return this.http.delete<CourseListItem[]>(`${BASE_URL}/${courseToRemoveId}`);   
     }
 
     getAuthors(textFragment?: string) {
